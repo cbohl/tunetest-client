@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const GuessSong = (props) => {
 
-    return(<h2>In the guessSong component</h2>)
-    // if state.guess == props.songTitle
+    const [guess, setGuess] = useState("test")
+
+    return(
+        <div>
+            <h2>In the guessSong component</h2>
+            <input
+                id="song-guess"
+                class="form-field"
+                type="text"
+                name="Song Guess"
+                value={guess}
+            />
+        </div>
+    )
 }
 
 export default GuessSong
