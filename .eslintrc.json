@@ -10,7 +10,9 @@
     "overrides": [
     ],
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     "plugins": [
         "react"
@@ -32,9 +34,9 @@
             "error",
             "always"
         ]
-        "editor.codeActionsOnSave": {
-            "source.fixAll.eslint": true
-        },
-        "eslint.validate": ["javascript"]
     }
 }
+        // "editor.codeActionsOnSave": {
+        //     "source.fixAll.eslint": true
+        // },
+        // "eslint.validate": ["javascript"]
