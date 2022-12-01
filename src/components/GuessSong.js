@@ -1,18 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState} from "react";
 
-const GuessSong = (props) => {
+const GuessSong = () => {
 
-    const [guess, setGuess] = useState("")
-    const songTitle = "Yesterday"
+    console.log("test 4");
+    const [guess, setGuess] = useState("");
+    const songTitle = "Yesterday";
 
     const handleGuess = () => {
-        console.log("Guess attempt")
+        console.log("Guess attempt");
         if(guess === songTitle){
-            alert('Correct!')
+            alert("Correct!");
         }else{
-            console.log('Incorrect guess')
+            console.log("Incorrect guess");
         }
-    } 
+    }; 
 
     return(
         <div>
@@ -33,15 +34,15 @@ const GuessSong = (props) => {
                     className="submit-button"
                     type="submit"
                     value="Hello!"
-                    onClick={e => handleGuess() }
+                    onClick={() => handleGuess() }
                 >
                     Guess   
                 </button>   
             </div>     
         </div>
-    )
-}
+    );
+};
 
 // onChange={(e) => handleGuessChange(e.currentTarget.value)}
 
-export default GuessSong
+export default GuessSong;
