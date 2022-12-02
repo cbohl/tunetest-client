@@ -15,7 +15,11 @@ const GuessSong = () => {
         }else{
             console.log("Incorrect guess");
         }
-    }; 
+    };
+
+    const adjustSubmitButtons = () => {
+        console.log("adjust buttons");
+    };
 
     return(
         <div>
@@ -29,23 +33,24 @@ const GuessSong = () => {
                     name="Song Guess"
                     placeholder="ENTER YOUR GUESS HERE"
                     value={guess}
-                    onChange={e => setGuess(e.target.value)}
-                />
+                    onChange={e => { setGuess(e.target.value); adjustSubmitButtons(); }}
+                ></input>
             </div>
             <div
-                id="song-guess-submit"
-                className={styles.songGuessSubmit}
-                onClick={() => handleGuess() }
+                id="song-guess-submit-container"
+                className={styles.songGuessSubmitContainer}
+                onClick={() => handleGuess()}
             >
-                <span display="hidden">
-                    <div>
-                        <FontAwesomeIcon icon={faArrowUp} />
-                    </div>
-                </span>
                 <span>
-                    <div>
-                        <FontAwesomeIcon icon={faMusic} />
-                    </div>
+                    { !guess ?
+                        <div id="empty-guess-button" className={styles.emptyGuessButton}>
+                            <FontAwesomeIcon icon={faMusic} />
+                        </div>
+                        :      
+                        <div id="song-guess-submit-button" className={styles.songGuessSubmitButton}>
+                            <FontAwesomeIcon icon={faArrowUp} />
+                        </div>
+                    }
                 </span>
             </div>
         </div>
@@ -55,6 +60,18 @@ const GuessSong = () => {
 // onChange={(e) => handleGuessChange(e.currentTarget.value)}
 
 export default GuessSong;
+
+
+// $('.email').on("change keyup paste",
+//   function(){
+//     if($(this).val()){
+//       $('.icon-paper-plane').addClass("next");
+//     } else {
+//       $('.icon-paper-plane').removeClass("next");
+//     }
+//   }
+// );
+
 
 
 

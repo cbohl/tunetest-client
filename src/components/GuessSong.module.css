@@ -18,20 +18,16 @@
   } */
 }
 
-.songGuessSubmit {
+.songGuessSubmitContainer {
   width: 20%;
   background-color: rgb(212, 212, 255);
-  cursor:pointer;
 }
 
-.songGuessSubmit span {
-    display: flex;
+.songGuessSubmitContainer span {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    line-height: $input-height;
     text-align: center;
-    height: $input-height;
     transition: all 0.2s ease-in;
 }
 
@@ -40,7 +36,22 @@
   font-size: 25px;
   color: rgb(153, 153, 248);
 }
-  
+
+/* .emptyGuessButton {
+  display: none;
+} */
+
+.songGuessSubmitButton {
+  cursor:pointer;
+}
+
+
+background: transparent;
+color: rgb(23, 210, 79);
+font-weight: 100;
+width: 100%;
+border: 0;
+
   /* .next-button {
     background: transparent;
     color: rgb(153, 153, 248);
