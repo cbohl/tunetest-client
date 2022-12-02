@@ -18,7 +18,7 @@
   } */
 }
 
-/* .animatedButton {
+.songGuessSubmit {
   width: 20%;
   background-color: rgb(212, 212, 255);
   
@@ -36,4 +36,13 @@
       font-size: 25px;
       color: rgb(153, 153, 248);
     }
-  } */
+  }
+  
+  .next-button {
+    background: transparent;
+    color: rgb(153, 153, 248);
+    font-weight: 100;
+    width: 100%;
+    border: 0;
+  }
+}

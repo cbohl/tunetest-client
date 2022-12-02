@@ -21,7 +21,7 @@ const GuessSong = () => {
             <h2>In the guessSong component</h2>
             <div>
                 <input
-                    id="song-guess"
+                    id="song-guess-text"
                     className={styles.formInput}
                     type="text"
                     name="Song Guess"
@@ -30,17 +30,17 @@ const GuessSong = () => {
                     onChange={e => setGuess(e.target.value)}
                 />
             </div>
-            <div>
-                <button
-                    id="song-guess-submit"
-                    className="submit-button"
-                    type="submit"
-                    value="Hello!"
-                    onClick={() => handleGuess() }
-                >
-                    Guess   
-                </button>   
-            </div>     
+            <div
+                id="song-guess-submit"
+                className={styles.songGuessSubmit}
+                onClick={() => handleGuess() }
+            >
+                Test 33
+                <span>
+                    SpanTest
+                    <i className="fa fa-arrow-up"/>
+                </span>
+            </div>
         </div>
     );
 };
@@ -48,3 +48,23 @@ const GuessSong = () => {
 // onChange={(e) => handleGuessChange(e.currentTarget.value)}
 
 export default GuessSong;
+
+
+
+// <div>
+// <button
+//     id="song-guess-submit"
+//     className="submit-button"
+//     type="submit"
+//     value="Hello!"
+//     onClick={() => handleGuess() }
+// >
+//     Guess   
+// </button>   
+// </div>   
+
+// .animated-button
+// span.icon-repeat-lock
+//   i.fa.fa-lock
+// span.next-button.repeat-password
+//   i.fa.fa-paper-plane
