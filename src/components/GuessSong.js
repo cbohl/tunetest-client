@@ -19,7 +19,6 @@ const GuessSong = () => {
 
     return(
         <div>
-            <FontAwesomeIcon icon={faCoffee} />
             <FontAwesomeIcon icon={faArrowUp} />
             <h2>In the guessSong component</h2>
             <div>
