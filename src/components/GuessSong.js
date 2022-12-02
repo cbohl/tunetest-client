@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import styles from "./GuessSong.module.css";
 
 const GuessSong = () => {
 
@@ -21,9 +22,10 @@ const GuessSong = () => {
             <div>
                 <input
                     id="song-guess"
-                    className="form-field"
+                    className={styles.formInput}
                     type="text"
                     name="Song Guess"
+                    placeholder="ENTER YOUR GUESS HERE"
                     value={guess}
                     onChange={e => setGuess(e.target.value)}
                 />

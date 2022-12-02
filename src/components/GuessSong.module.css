@@ -1,0 +1,39 @@
+.formInput {
+  /* background: green; */
+  background: rgba(8, 120, 212, 0.281);
+  /* lighten(rgb(92, 92, 189), 5%) */
+  color: rgb(54, 54, 222);
+  width: 80%;
+  border: 0;
+  padding: 20px 40px;
+  margin: 0;
+  
+  /* &:focus {
+    outline: none;
+  }
+  
+  &::placeholder {
+    color: rgb(143, 143, 214);
+    font-weight: 100;
+  } */
+}
+
+/* .animatedButton {
+  width: 20%;
+  background-color: rgb(212, 212, 255);
+  
+  span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    line-height: $input-height;
+    text-align: center;
+    height: $input-height;
+    transition: all 0.2s ease-in;
+    
+    i {
+      font-size: 25px;
+      color: rgb(153, 153, 248);
+    }
+  } */
