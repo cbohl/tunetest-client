@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import styles from "./GuessSong.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 
 const GuessSong = () => {
-
     console.log("test 4");
     const [guess, setGuess] = useState("");
     const songTitle = "Yesterday";
@@ -18,6 +19,8 @@ const GuessSong = () => {
 
     return(
         <div>
+            <FontAwesomeIcon icon={faCoffee} />
+            <FontAwesomeIcon icon={faArrowUp} />
             <h2>In the guessSong component</h2>
             <div>
                 <input
@@ -35,10 +38,15 @@ const GuessSong = () => {
                 className={styles.songGuessSubmit}
                 onClick={() => handleGuess() }
             >
-                Test 33
+                <span display="hidden">
+                    <div>
+                        <FontAwesomeIcon icon={faArrowUp} />
+                    </div>
+                </span>
                 <span>
-                    SpanTest
-                    <i className="fa fa-arrow-up"/>
+                    <div>
+                        <FontAwesomeIcon icon={faMusic} />
+                    </div>
                 </span>
             </div>
         </div>

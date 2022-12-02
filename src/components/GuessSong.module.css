@@ -21,8 +21,10 @@
 .songGuessSubmit {
   width: 20%;
   background-color: rgb(212, 212, 255);
-  
-  span {
+  cursor:pointer;
+}
+
+.songGuessSubmit span {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -31,18 +33,18 @@
     text-align: center;
     height: $input-height;
     transition: all 0.2s ease-in;
-    
-    i {
-      font-size: 25px;
-      color: rgb(153, 153, 248);
-    }
-  }
+}
+
+
+.songGuessSubmit span div {
+  font-size: 25px;
+  color: rgb(153, 153, 248);
+}
   
-  .next-button {
+  /* .next-button {
     background: transparent;
     color: rgb(153, 153, 248);
     font-weight: 100;
     width: 100%;
     border: 0;
-  }
-}
+  } */
