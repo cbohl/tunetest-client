@@ -1,19 +1,20 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 import styles from "./GuessSong.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 
-const GuessSong = () => {
-    console.log("test 4");
-    const [guess, setGuess] = useState("");
-    const songTitle = "Yesterday";
+const GuessSong = (props) => {    
+    let [guess, setGuess] = useState("");
 
     const handleGuess = () => {
-        console.log("Guess attempt");
-        if(guess === songTitle){
+        if(guess === props.songTitle){
             alert("Correct!");
+            setGuess("");
+            console.log(props.songTitle);
+            props.nextSong();
         }else{
-            console.log("Incorrect guess");
+            console.log("Incorrect guess"); 
         }
     };
 
@@ -25,6 +26,7 @@ const GuessSong = () => {
         <div>
             <FontAwesomeIcon icon={faArrowUp} />
             <h2>In the guessSong component</h2>
+            <h3>Current song in guessSong component {props.songTitle}</h3>
             <div>
                 <input
                     id="song-guess-text"
@@ -56,6 +58,11 @@ const GuessSong = () => {
         </div>
     );
 };
+
+GuessSong.propTypes = {
+    songTitle: PropTypes.string.isRequired,
+    nextSong: PropTypes.func.isRequired
+};  
 
 // onChange={(e) => handleGuessChange(e.currentTarget.value)}
 
