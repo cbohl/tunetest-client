@@ -23,7 +23,7 @@ const GuessSong = (props) => {
     };
 
     return(
-        <div>
+        <form onSubmit={handleGuess}>
             <FontAwesomeIcon icon={faArrowUp} />
             <h2>In the guessSong component</h2>
             <h3>Current song in guessSong component {props.songTitle}</h3>
@@ -42,6 +42,7 @@ const GuessSong = (props) => {
                 id="song-guess-submit-container"
                 className={styles.songGuessSubmitContainer}
                 onClick={() => handleGuess()}
+                type="submit"
             >
                 <span>
                     { !guess ?
@@ -55,7 +56,7 @@ const GuessSong = (props) => {
                     }
                 </span>
             </div>
-        </div>
+        </form>
     );
 };
 
