@@ -24,9 +24,6 @@ const GuessSong = (props) => {
 
     return(
         <form onSubmit={handleGuess}>
-            <FontAwesomeIcon icon={faArrowUp} />
-            <h2>In the guessSong component</h2>
-            <h3>Current song in guessSong component {props.songTitle}</h3>
             <div>
                 <input
                     id="song-guess-text"
