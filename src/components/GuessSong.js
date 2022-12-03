@@ -60,42 +60,9 @@ const GuessSong = (props) => {
 };
 
 GuessSong.propTypes = {
-    songTitle: PropTypes.string.isRequired,
+    songTitle: PropTypes.string,
     nextSong: PropTypes.func.isRequired
 };  
 
-// onChange={(e) => handleGuessChange(e.currentTarget.value)}
-
 export default GuessSong;
 
-
-// $('.email').on("change keyup paste",
-//   function(){
-//     if($(this).val()){
-//       $('.icon-paper-plane').addClass("next");
-//     } else {
-//       $('.icon-paper-plane').removeClass("next");
-//     }
-//   }
-// );
-
-
-
-
-// <div>
-// <button
-//     id="song-guess-submit"
-//     className="submit-button"
-//     type="submit"
-//     value="Hello!"
-//     onClick={() => handleGuess() }
-// >
-//     Guess   
-// </button>   
-// </div>   
-
-// .animated-button
-// span.icon-repeat-lock
-//   i.fa.fa-lock
-// span.next-button.repeat-password
-//   i.fa.fa-paper-plane
