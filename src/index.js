@@ -33,9 +33,13 @@ root.render(
     <React.StrictMode>
         <midi-player
             src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
+        >
         </midi-player>
-        <midi-player visualizer="#myVisualizer, #myOtherVisualizer"></midi-player>
+        {/* <midi-player
+            src="./public/Guns_n_Roses_-_Paradise_City.mid"
+        >
+        </midi-player> */}
+        {/* <midi-player visualizer="#myVisualizer, #myOtherVisualizer"></midi-player> */}
         <GuessingGame />
         {/* <GuessSong songTitle={songTitle} nextSong={nextSong}/> */}
         {/* <h2>Current Song {songTitle}</h2> */}
