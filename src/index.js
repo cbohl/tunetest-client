@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import GuessingGame from "./components/GuessingGame";
+import "html-midi-player";
+
+// console.log(MidiPlayer);
 // import GuessSong from "./components/GuessSong";
 
 // const songsList = ["And Your Bird Can Sing", "Yesterday", "Ticket to Ride"];
@@ -28,6 +31,11 @@ import GuessingGame from "./components/GuessingGame";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
+        <midi-player
+            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+            sound-font visualizer="#myVisualizer">
+        </midi-player>
+        <midi-player visualizer="#myVisualizer, #myOtherVisualizer"></midi-player>
         <GuessingGame />
         {/* <GuessSong songTitle={songTitle} nextSong={nextSong}/> */}
         {/* <h2>Current Song {songTitle}</h2> */}
