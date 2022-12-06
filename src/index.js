@@ -32,11 +32,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+            src="https://bitmidi.com/uploads/112561.mid"
         >
         </midi-player>
         {/* <midi-player
-            src="./public/Guns_n_Roses_-_Paradise_City.mid"
+            src="public/ParadiseCity.mid"
         >
         </midi-player> */}
         {/* <midi-player visualizer="#myVisualizer, #myOtherVisualizer"></midi-player> */}
