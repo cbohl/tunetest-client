@@ -39,7 +39,7 @@ class Song {
 
 let song1 = new Song("Hey Jude", "https://bitmidi.com/uploads/16427.mid");
 let song2 = new Song("Eight Days a Week", "https://bitmidi.com/uploads/16425.mid");
-let song3 = new Song("Penny Lane", "https://bitmidi.com/beatles-penny-lane-2-k-mid#:~:text=Download%20BEATLES.Penny%20lane%202%20k.mid");
+let song3 = new Song("With a Little Help from My Friends", "https://bitmidi.com/uploads/16431.mid");
 
 let songsList = [song1, song2, song3]; 
 
