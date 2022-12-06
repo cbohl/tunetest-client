@@ -44,13 +44,13 @@ const GuessingGame = (props) => {
 
     return(
         <>
-            {/* <h1> Current song {props.songsList[songIndex].title}</h1>
+            <h1> Current song {props.songsList[songIndex].title}</h1>
             <h2> Current link {props.songsList[songIndex].midiLink}</h2>
             <h3> Current index {songIndex}</h3>
             <midi-player
                 src={props.songsList[songIndex].midiLink}
             >  
-            </midi-player> */}
+            </midi-player>
             <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
         </>
     );

@@ -1,13 +1,16 @@
-import React, {useState} from "react";
+/* eslint-disable */
+
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import styles from "./GuessSong.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 
 const GuessSong = (props) => {    
-    let [guess, setGuess] = useState("");
+    let [guess, setGuess] = useState("");    
 
     const handleGuess = () => {
+        // event.preventDefault();
         if(guess === props.songTitle){
             alert("Correct!");
             setGuess("");
@@ -18,12 +21,17 @@ const GuessSong = (props) => {
         }
     };
 
+    const enterSubmit = (e) => {
+        e.preventDefault();
+        handleGuess();
+    }
+
     const adjustSubmitButtons = () => {
         console.log("adjust buttons");
     };
 
     return(
-        <form onSubmit={handleGuess}>
+        <form onSubmit={(e) => enterSubmit(e)}>
             <div>
                 <input
                     id="song-guess-text"
