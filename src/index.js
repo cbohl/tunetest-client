@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import GuessingGame from "./components/GuessingGame";
@@ -28,6 +30,19 @@ import "html-midi-player";
 //     console.log("next song", songTitle);
 // };
 
+class Song {
+    constructor(title, midiLink) {
+        this.title = title;
+        this.midiLink = midiLink;
+    }
+}
+
+let song1 = new Song("Hey Jude", "https://bitmidi.com/uploads/16427.mid");
+let song2 = new Song("Eight Days a Week", "https://bitmidi.com/uploads/16425.mid");
+let song3 = new Song("Penny Lane", "https://bitmidi.com/beatles-penny-lane-2-k-mid#:~:text=Download%20BEATLES.Penny%20lane%202%20k.mid");
+
+let songsList = [song1, song2, song3]; 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
@@ -40,7 +55,7 @@ root.render(
         >
         </midi-player> */}
         {/* <midi-player visualizer="#myVisualizer, #myOtherVisualizer"></midi-player> */}
-        <GuessingGame />
+        <GuessingGame songsList={songsList} />
         {/* <GuessSong songTitle={songTitle} nextSong={nextSong}/> */}
         {/* <h2>Current Song {songTitle}</h2> */}
     </React.StrictMode>
