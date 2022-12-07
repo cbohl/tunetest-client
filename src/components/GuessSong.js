@@ -6,18 +6,32 @@ import styles from "./GuessSong.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 
+// Would need to prevent user submitting unless user has correct answer... 
+// so check answer on every character typed and prevent submit unless it works, 
+// hide fake submit buttons and hide fake form.. or maybe form only becomes a form
+// if guessIsCorrect is true?
+
 const GuessSong = (props) => {    
     let [guess, setGuess] = useState("");    
 
     const handleGuess = () => {
         // event.preventDefault();
         if(guess === props.songTitle){
-            alert("Correct!");
+            // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+            // alert("Correct!");
             setGuess("");
             console.log(props.songTitle);
             props.nextSong();
         }else{
             console.log("Incorrect guess"); 
+        }
+    };
+
+    const guessIsCorrect = () => {
+        if(guess === props.songTitle){
+            return true;
+        } else {
+            return false;
         }
     };
 
