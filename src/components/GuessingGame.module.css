@@ -1,0 +1,17 @@
+.nextSong {
+    display: none;
+    visibility: hidden;
+}
+
+h3 {
+    color: rgb(128, 0, 77);
+}
+
+.testclass {
+    color: yellow;
+}
+
+#super {
+    display: none;
+    visibility: hidden;
+}

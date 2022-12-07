@@ -4,6 +4,8 @@
 import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import GuessSong from "./GuessSong";
+import styles from "./GuessingGame.module.css";
+
 import "html-midi-player";
 
 
@@ -68,9 +70,11 @@ const GuessingGame = (props) => {
 
     return(
         <>
-            <h1> Current song {props.songsList[songIndex].title}</h1>
-            <h2> Current link {props.songsList[songIndex].midiLink}</h2>
-            <h3> Current index {songIndex}</h3>
+            <div id="super">
+                <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
+                <h2> Current link {props.songsList[songIndex].midiLink}</h2>
+                <h3> Current index {songIndex}</h3>
+            </div>
             <div className="current-song">
                 <midi-player
                     src={props.songsList[songIndex].midiLink}
@@ -79,7 +83,7 @@ const GuessingGame = (props) => {
                 >  
                 </midi-player>
             </div>
-            <div className="next-song" display="none">
+            <div className={styles.nextSong}>
                 <midi-player
                     src={props.songsList[songIndex + 1].midiLink}
                     playing
