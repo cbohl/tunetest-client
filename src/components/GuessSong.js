@@ -13,60 +13,6 @@ import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 
 const GuessSong = (props) => {    
     let [guess, setGuess] = useState("");  
-    
-    useEffect(() => {
-        const keyDownHandler = event => {
-            console.log('User pressed: ', event.key);
-      
-            if (event.key === 'Enter') {
-              event.preventDefault();
-              document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
-      
-              // 👇️ your logic here
-            //   myFunction();
-            }
-          };
-      
-          document.addEventListener('keydown', keyDownHandler);
-      
-          return () => {
-            document.removeEventListener('keydown', keyDownHandler);
-          };
-
-
-
-
-        //   const keyDownHandler = event => {
-        //     console.log('User pressed: ', event.key);
-        
-        //     if (event.key === 'Enter') {
-        //         event.preventDefault();
-        //         if(guessIsCorrect()){
-        //             console.log("The guess is correct!");
-        //             clickPlay();
-        //         }
-        //         else {
-        //             console.log("Bad guess");
-        //         }
-        //     // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
-        //     // clickPlay();
-        //     // 👇️ your logic here
-        //     //   myFunction();
-        //     // }
-        //     // }
-        // };
-
-
-
-
-        // document.querySelector('#txtSearch').addEventListener('keypress', function (e) {
-        //     if (e.key === 'Enter') {
-        //       // code for enter
-        //     }
-        // })
-
-
-    });
 
     const handleGuess = () => {
         // event.preventDefault();
@@ -89,17 +35,45 @@ const GuessSong = (props) => {
         }
     };
 
-    const enterSubmit = (e) => {
-        e.preventDefault();
-        handleGuess();
-    }
+    // const enterSubmit = (e) => {
+    //     e.preventDefault();
+    //     handleGuess();
+    // }
 
     const adjustSubmitButtons = () => {
         console.log("adjust buttons");
     };
 
+    const clickPlay = () => {
+        document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+    };
+
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log('User pressed: ', event.key);
+      
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              if(guessIsCorrect()){
+                clickPlay();
+                console.log("Guess is correct");
+                // handleGuess();
+              }
+              else{
+                console.log("Guess is not right!");
+              }
+            }
+        };
+      
+        document.addEventListener('keydown', keyDownHandler);
+      
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        };
+    });
+
     return(
-        <form onSubmit={(e) => enterSubmit(e)}>
+        <div>
             <div>
                 <input
                     id="song-guess-text"
@@ -129,7 +103,7 @@ const GuessSong = (props) => {
                     }
                 </span>
             </div>
-        </form>
+        </div>
     );
 };
 
