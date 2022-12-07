@@ -15,3 +15,12 @@ h3 {
     display: none;
     visibility: hidden;
 }
+
+.displayMidiPlayer {
+    
+}
+
+.hiddenMidiPlayer {
+    display: none;
+    visibility: hidden;
+}

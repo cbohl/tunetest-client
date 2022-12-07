@@ -75,6 +75,7 @@ const GuessingGame = (props) => {
                 <h2> Current link {props.songsList[songIndex].midiLink}</h2>
                 <h3> Current index {songIndex}</h3>
             </div>
+{/* 
             <div className="current-song">
                 <midi-player
                     src={props.songsList[songIndex].midiLink}
@@ -90,7 +91,27 @@ const GuessingGame = (props) => {
                     loop
                 >  
                 </midi-player>
+            </div> */}
+
+            <div>
+                {/* <h1> Test </h1> */}
+                <h2> Test </h2>
+                <h2> Test2 </h2>
+                {props.songsList.map((s, i) => { return(
+                    <div className={ songIndex == i ? styles.displayMidiPlayer : styles.hiddenMidiPlayer } key={i}>
+                        <h2>In map!</h2>
+                        <h3>{s.title}</h3>
+                        <midi-player
+                            src= {s.midiLink}
+                            loop
+                        >
+                        </midi-player>
+                    </div>
+                )})}
+
             </div>
+
+
             <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
             <button onClick={manipulatePlay}>Test button</button>
         </>

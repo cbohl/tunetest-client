@@ -45,7 +45,7 @@ const GuessSong = (props) => {
     };
 
     const clickPlay = () => {
-        document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+        document.querySelector("#root > div:nth-child(3) > div.GuessingGame_displayMidiPlayer__9m6GL > midi-player").shadowRoot.querySelector("div > button").click();
     };
 
     useEffect(() => {
