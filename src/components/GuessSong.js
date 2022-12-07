@@ -12,7 +12,61 @@ import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 // if guessIsCorrect is true?
 
 const GuessSong = (props) => {    
-    let [guess, setGuess] = useState("");    
+    let [guess, setGuess] = useState("");  
+    
+    useEffect(() => {
+        const keyDownHandler = event => {
+            console.log('User pressed: ', event.key);
+      
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+      
+              // 👇️ your logic here
+            //   myFunction();
+            }
+          };
+      
+          document.addEventListener('keydown', keyDownHandler);
+      
+          return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+          };
+
+
+
+
+        //   const keyDownHandler = event => {
+        //     console.log('User pressed: ', event.key);
+        
+        //     if (event.key === 'Enter') {
+        //         event.preventDefault();
+        //         if(guessIsCorrect()){
+        //             console.log("The guess is correct!");
+        //             clickPlay();
+        //         }
+        //         else {
+        //             console.log("Bad guess");
+        //         }
+        //     // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+        //     // clickPlay();
+        //     // 👇️ your logic here
+        //     //   myFunction();
+        //     // }
+        //     // }
+        // };
+
+
+
+
+        // document.querySelector('#txtSearch').addEventListener('keypress', function (e) {
+        //     if (e.key === 'Enter') {
+        //       // code for enter
+        //     }
+        // })
+
+
+    });
 
     const handleGuess = () => {
         // event.preventDefault();
