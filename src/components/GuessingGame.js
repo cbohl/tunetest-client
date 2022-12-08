@@ -1,6 +1,6 @@
-/* eslint-disable */
+// /* eslint-disable */
 
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import GuessSong from "./GuessSong";
@@ -9,7 +9,6 @@ import "html-midi-player";
 
 
 const GuessingGame = (props) => {
-    let songsListBeta = ["And Your Bird Can Sing", "Yesterday", "Ticket to Ride"];
     let [songIndex, setSongIndex] = useState(0);
 
     const nextSong = () => {
@@ -21,14 +20,14 @@ const GuessingGame = (props) => {
             alert("Out of songs!");
     };
 
-    const manipulatePlay = () => {
-        console.log("test");
-        console.log(
-            document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
-        );
-        document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
-        // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
-    }
+    // const manipulatePlay = () => {
+    //     console.log("test");
+    //     console.log(
+    //         document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
+    //     );
+    //     document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+    //     // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
+    // };
 
     return(
         <>
@@ -41,25 +40,26 @@ const GuessingGame = (props) => {
             <div>
                 <h2> Test </h2>
                 <h2> Test2 </h2>
-                {props.songsList.map((s, i) => { return(
-                    <div className={ classNames.bind(styles)({
-                        "midiPlayer": true,
-                        "displayMidiPlayer": songIndex == i,
-                        "nextMidiPlayer": songIndex == i-1, 
-                        "hiddenMidiPlayer": songIndex != i
-                    }) } key = {i}>
-                        <midi-player
-                            src= {s.midiLink}
-                            loop
-                        >
-                        </midi-player>
-                    </div>
-                )})}
-
+                {props.songsList.map((s, i) => { 
+                    return(
+                        <div className={ classNames.bind(styles)({
+                            "midiPlayer": true,
+                            "displayMidiPlayer": songIndex == i,
+                            "nextMidiPlayer": songIndex == i-1, 
+                            "hiddenMidiPlayer": songIndex != i
+                        }) } key = {i}>
+                            <midi-player
+                                src= {s.midiLink}
+                                loop
+                            >
+                            </midi-player>
+                        </div>
+                    );
+                })}
             </div>
 
             <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
-            <button onClick={manipulatePlay}>Test button</button>
+            {/* <button onClick={manipulatePlay}>Test button</button> */}
         </>
     );
 };
