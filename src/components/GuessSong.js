@@ -15,10 +15,8 @@ const GuessSong = (props) => {
     let [guess, setGuess] = useState("");  
 
     const handleGuess = () => {
-        // event.preventDefault();
         if(guess === props.songTitle){
             clickPlay();
-            // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
             // alert("Correct!");
             setGuess("");
             console.log(props.songTitle);
@@ -36,50 +34,44 @@ const GuessSong = (props) => {
         }
     };
 
-    // const enterSubmit = (e) => {
-    //     e.preventDefault();
-    //     handleGuess();
-    // }
-
     const adjustSubmitButtons = () => {
         console.log("adjust buttons");
     };
 
     const clickPlay = () => {
-        // document.querySelector("#root > div:nth-child(3) > div.GuessingGame_displayMidiPlayer__9m6GL > midi-player").shadowRoot.querySelector("div > button").click();
-        // document.querySelector(".nextMidiPlayer").shadowRoot.querySelector("div > button").click();
         document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
     };
 
-    useEffect(() => {
-        const keyDownHandler = event => {
-            console.log('User pressed: ', event.key);
+    // useEffect(() => {
+    //     if(guessIsCorrect()){
+    //         const keyDownHandler = event => {
+    //             console.log('User pressed: ', event.key);
+    //             if (event.key === 'Enter') {
+    //                 // event.preventDefault();
+    //                 document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
+    //                 console.log("Guess is correct");
+    //                 handleGuess();
+    //             }
+    //             else{
+    //                 console.log("Guess is not right!");
+    //             }
+    //         }
+    //         document.addEventListener('keydown', keyDownHandler);
       
-            if (event.key === 'Enter') {
-              event.preventDefault();
-            //   document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
-              if(guessIsCorrect()){
-                // clickPlay();
+    //         return () => {
+    //             document.removeEventListener('keydown', keyDownHandler);
+    //         };
+    
+    //     };
+    
+    //                 //   document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
+    //         //   if(guessIsCorrect()){
+    //             // clickPlay();
 
-
-                // Click play is hard coded in because this is the only way to avoid Chrome's AudioContext
-                // disable for requiring gesture error message
-                document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
-                console.log("Guess is correct");
-                handleGuess();
-              }
-              else{
-                console.log("Guess is not right!");
-              }
-            }
-        };
+    //             // Click play is hard coded in because this is the only way to avoid Chrome's AudioContext
+    //             // disable for requiring gesture error message
       
-        document.addEventListener('keydown', keyDownHandler);
-      
-        return () => {
-            document.removeEventListener('keydown', keyDownHandler);
-        };
-    });
+    // });
 
     return(
         <div>
