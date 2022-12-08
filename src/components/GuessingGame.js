@@ -10,6 +10,7 @@ import "html-midi-player";
 
 const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
+    console.log("great props", props);
 
     const clickPlay = () => {
         document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
@@ -19,6 +20,7 @@ const GuessingGame = (props) => {
     const nextSong = () => {
         clickPlay();
         props.songsList[songIndex].isCorrect = true;
+
         console.log("Song index", songIndex, "songs list length", props.songsList.length);
         if(songIndex < props.songsList.length -1){
             console.log("inside");
@@ -26,6 +28,26 @@ const GuessingGame = (props) => {
         }else
             alert("Out of songs!");
     };
+
+    const skipSong = () => {
+        if(songIndex < props.songsList.length -1){
+            clickPlay();
+            console.log("inside");
+            setSongIndex(songIndex + 1);
+        }else
+            alert("Out of songs!");
+    };
+
+    // for version where user can skip songs and come back
+    // const correctGuess = () =>
+    //     clickPlay();
+        // props.songsList[songIndex].isCorrect = true;
+        
+    //     // for
+    //     for(i=0; i < songList.length; i++){
+    //         if(i < songIndex.length - 1)
+    //             < songIndex + 1]
+    //     }
 
     // const manipulatePlay = () => {
     //     console.log("test");
@@ -66,6 +88,8 @@ const GuessingGame = (props) => {
             </div>
 
             <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
+            
+            <button text="skip song" onClick={skipSong}>Skip Song</button>
             {/* <button onClick={manipulatePlay}>Test button</button> */}
         </>
     );
