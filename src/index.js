@@ -44,21 +44,27 @@ let song3 = new Song("With a Little Help from My Friends", "https://bitmidi.com/
 
 let beatlesSongsList = [song1, song2, song3]; 
 
-const createGameList = function (songList) {
-    return(
-        songList.map( () => {
-        // if(i==0){
-        //     songList.isCurrentSong = true;
-        // } else {
-        //     songList.isCurrentSong = false;
-        // }
-            song * 2;
-        }
+// debugger;
 
-    );
+const createGameList = function (songList) {
+    // return(
+    //     songList.map( () => {
+    //     if(i==0){
+    //         songList.isCurrentSong = true;
+    //     } else {
+    //         songList.isCurrentSong = false;
+    //     }
+    //         song * 2;
+    //     }
+
+    // );
+    songList.forEach(function(song){song.isCorrectlyGuessed = false, song.isCurrent = false});
+    songList[0].isCurrent = true;
+    console.log(songList);
+    return songList;
 };
 
-createGameList(beatlesSongsList);
+console.log("list", createGameList(beatlesSongsList));
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -73,7 +79,7 @@ root.render(
         >
         </midi-player> */}
         {/* <midi-player visualizer="#myVisualizer, #myOtherVisualizer"></midi-player> */}
-        <GuessingGame songsList={songsList} />
+        <GuessingGame songsList={createGameList(beatlesSongsList)} />
         {/* <GuessSong songTitle={songTitle} nextSong={nextSong}/> */}
         {/* <h2>Current Song {songTitle}</h2> */}
     </React.StrictMode>

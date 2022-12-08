@@ -18,6 +18,7 @@ const GuessingGame = (props) => {
 
     const nextSong = () => {
         clickPlay();
+        props.songsList[songIndex].isCorrect = true;
         console.log("Song index", songIndex, "songs list length", props.songsList.length);
         if(songIndex < props.songsList.length -1){
             console.log("inside");
