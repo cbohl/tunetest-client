@@ -3,6 +3,7 @@
 // import React, {useState, useEffect} from "react";
 import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames/bind";
 import GuessSong from "./GuessSong";
 import styles from "./GuessingGame.module.css";
 
@@ -63,6 +64,17 @@ const GuessingGame = (props) => {
         // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
     }
 
+
+    // if(songIndex == i){
+    //     [styles.displayMidiPlayer, styles.i]                                
+    // } 
+    // else if(songIndex == i + 1){
+    //     [styles.hiddenMidiPlayer, styles.nextMidiPlayer, styles.i]
+    // }
+    // else {
+    //     [styles.hiddenMidiPlayer, styles.i]
+    // }
+
     // useEffect(() => {
 
     // }
@@ -93,14 +105,26 @@ const GuessingGame = (props) => {
                 </midi-player>
             </div> */}
 
+
             <div>
                 {/* <h1> Test </h1> */}
                 <h2> Test </h2>
                 <h2> Test2 </h2>
                 {props.songsList.map((s, i) => { return(
-                    <div className={ songIndex == i ? styles.displayMidiPlayer : styles.hiddenMidiPlayer } key={i}>
-                        <h2>In map!</h2>
+                    // <div className={ songIndex == i ? styles.displayMidiPlayer : styles.hiddenMidiPlayer } key={i}>
+                    <div className={ classNames.bind(styles)({
+                        "midiPlayer": true,
+                        "displayMidiPlayer": songIndex == i,
+                        "nextMidiPlayer": songIndex == i-1, 
+                        "hiddenMidiPlayer": songIndex != i
+                    }) } key = {i}>
+                        {/* <h2>In map!</h2>
                         <h3>{s.title}</h3>
+                        <h3> i </h3>
+                        <h3> {i} </h3> 
+                        <h4> song index</h4>
+                        <h4> {songIndex} </h4> */}
+                            {/* {i} song index {songIndex} </h3> */}
                         <midi-player
                             src= {s.midiLink}
                             loop

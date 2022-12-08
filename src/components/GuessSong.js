@@ -17,6 +17,7 @@ const GuessSong = (props) => {
     const handleGuess = () => {
         // event.preventDefault();
         if(guess === props.songTitle){
+            clickPlay();
             // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
             // alert("Correct!");
             setGuess("");
@@ -45,7 +46,9 @@ const GuessSong = (props) => {
     };
 
     const clickPlay = () => {
-        document.querySelector("#root > div:nth-child(3) > div.GuessingGame_displayMidiPlayer__9m6GL > midi-player").shadowRoot.querySelector("div > button").click();
+        // document.querySelector("#root > div:nth-child(3) > div.GuessingGame_displayMidiPlayer__9m6GL > midi-player").shadowRoot.querySelector("div > button").click();
+        // document.querySelector(".nextMidiPlayer").shadowRoot.querySelector("div > button").click();
+        document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
     };
 
     useEffect(() => {
@@ -54,10 +57,16 @@ const GuessSong = (props) => {
       
             if (event.key === 'Enter') {
               event.preventDefault();
+            //   document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
               if(guessIsCorrect()){
-                clickPlay();
+                // clickPlay();
+
+
+                // Click play is hard coded in because this is the only way to avoid Chrome's AudioContext
+                // disable for requiring gesture error message
+                document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
                 console.log("Guess is correct");
-                // handleGuess();
+                handleGuess();
               }
               else{
                 console.log("Guess is not right!");
