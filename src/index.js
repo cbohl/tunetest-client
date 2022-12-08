@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* eslint-disable */
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -41,7 +42,24 @@ let song1 = new Song("Hey Jude", "https://bitmidi.com/uploads/16427.mid");
 let song2 = new Song("Eight Days a Week", "https://bitmidi.com/uploads/16425.mid");
 let song3 = new Song("With a Little Help from My Friends", "https://bitmidi.com/uploads/16431.mid");
 
-let songsList = [song1, song2, song3]; 
+let beatlesSongsList = [song1, song2, song3]; 
+
+const createGameList = function (songList) {
+    return(
+        songList.map( () => {
+        // if(i==0){
+        //     songList.isCurrentSong = true;
+        // } else {
+        //     songList.isCurrentSong = false;
+        // }
+            song * 2;
+        }
+
+    );
+};
+
+createGameList(beatlesSongsList);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
