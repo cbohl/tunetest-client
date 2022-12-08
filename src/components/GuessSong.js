@@ -16,7 +16,7 @@ const GuessSong = (props) => {
 
     const handleGuess = () => {
         if(guess === props.songTitle){
-            clickPlay();
+            // clickPlay();
             // alert("Correct!");
             setGuess("");
             console.log(props.songTitle);

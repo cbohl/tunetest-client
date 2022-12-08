@@ -1,4 +1,4 @@
-// /* eslint-disable */
+/* eslint-disable */
 
 import React, {useState} from "react";
 import PropTypes from "prop-types";
@@ -11,7 +11,13 @@ import "html-midi-player";
 const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
 
+    const clickPlay = () => {
+        document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
+    };
+
+
     const nextSong = () => {
+        clickPlay();
         console.log("Song index", songIndex, "songs list length", props.songsList.length);
         if(songIndex < props.songsList.length -1){
             console.log("inside");
