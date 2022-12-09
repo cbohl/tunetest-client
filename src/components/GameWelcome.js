@@ -8,17 +8,28 @@ const GameWelcome = (props) => {
         // debugger;
         document.querySelector(".midiPlayer  > midi-player").shadowRoot.querySelector("div > button").click()
     };
+
+    const intitializeGame = () => {
+        clickPlay();
+        props.setGameStart(true);
+    }
     
-    return(
-        <div>
-            <h1>Welcome to the Beatles Guessing Game</h1>
-            <button onClick={() => clickPlay()}>Start game</button>
-        </div>
-    )
+    if(props.gameStart == false){
+        return(
+            <div>
+                <h1>Welcome to the Beatles Guessing Game</h1>
+                <button onClick={intitializeGame}>Start game</button>
+            </div>
+        )
+    }
+    else {
+        return null;
+    }
 }
 
 GameWelcome.propTypes = {
-    nextSong: PropTypes.func
+    setGameStart: PropTypes.func,
+    gameStart: PropTypes.bool
 }
 
 export default GameWelcome

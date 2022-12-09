@@ -12,6 +12,7 @@ import "html-midi-player";
 
 const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
+    let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
 
     console.log("great props", props);
@@ -19,7 +20,6 @@ const GuessingGame = (props) => {
     const clickPlay = () => {
         document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
     };
-
 
     const nextSong = () => {
         props.songsList[songIndex].isCorrect = true;
@@ -29,9 +29,10 @@ const GuessingGame = (props) => {
             clickPlay();
             console.log("inside");
             setSongIndex(songIndex + 1);
-        }else
+        }else{
             setGameOver(true);
             // alert("Out of songs!");
+        }
     };
 
     const skipSong = () => {
@@ -66,40 +67,49 @@ const GuessingGame = (props) => {
 
     return(
         <>
-            <GameWelcome></GameWelcome>
-            <div id="super">
-                <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
-                <h2> Current link {props.songsList[songIndex].midiLink}</h2>
-                <h3> Current index {songIndex}</h3>
-            </div>
+            {/* <div className={ classNames.bind(styles)({
+                "hidden": gameStart
+            }) }> */}
+                <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
+            {/* </div> */}
 
-            <div>
-                <h2> Test </h2>
-                <h2> Test2 </h2>
-                {props.songsList.map((s, i) => { 
-                    return(
-                        <div className={ classNames.bind(styles)({
-                            "midiPlayer": true,
-                            "displayMidiPlayer": songIndex == i,
-                            "nextMidiPlayer": songIndex == i-1, 
-                            "hiddenMidiPlayer": songIndex != i
-                        }) } key = {i}>
-                            <midi-player
-                                src= {s.midiLink}
-                                loop
-                            >
-                            </midi-player>
-                        </div>
-                    );
-                })}
-            </div>
+            <div className={ classNames.bind(styles)({
+                "main-game": true,
+                "hidden": !gameStart || gameOver
+            }) }>                
+                <div id="super">
+                    <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
+                    <h2> Current link {props.songsList[songIndex].midiLink}</h2>
+                    <h3> Current index {songIndex}</h3>
+                </div>
 
-            <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
+                <div>
+                    <h2> Test </h2>
+                    <h2> Test2 </h2>
+                    {props.songsList.map((s, i) => { 
+                        return(
+                            <div className={ classNames.bind(styles)({
+                                "midiPlayer": true,
+                                "displayMidiPlayer": songIndex == i,
+                                "nextMidiPlayer": songIndex == i-1, 
+                                "hiddenMidiPlayer": songIndex != i
+                            }) } key = {i}>
+                                <midi-player
+                                    src= {s.midiLink}
+                                    loop
+                                >
+                                </midi-player>
+                            </div>
+                        );
+                    })}
+                </div>
+                <button text="skip song" onClick={skipSong}>Skip Song</button>
+                {/* <button onClick={manipulatePlay}>Test button</button> */}
+                <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
+            </div>
             
-            <button text="skip song" onClick={skipSong}>Skip Song</button>
 
             <GameComplete songsList={props.songsList} gameOver={gameOver}></GameComplete>
-            {/* <button onClick={manipulatePlay}>Test button</button> */}
         </>
     );
 };
