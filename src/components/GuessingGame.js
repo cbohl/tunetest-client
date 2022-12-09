@@ -4,12 +4,15 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import GuessSong from "./GuessSong";
+import GameComplete from "./GameComplete";
 import styles from "./GuessingGame.module.css";
 import "html-midi-player";
 
 
 const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
+    let [gameOver, setGameOver] = useState(false);
+
     console.log("great props", props);
 
     const clickPlay = () => {
@@ -26,7 +29,8 @@ const GuessingGame = (props) => {
             console.log("inside");
             setSongIndex(songIndex + 1);
         }else
-            alert("Out of songs!");
+            setGameOver(true);
+            // alert("Out of songs!");
     };
 
     const skipSong = () => {
@@ -35,8 +39,9 @@ const GuessingGame = (props) => {
             console.log("inside");
             setSongIndex(songIndex + 1);
         }else
-            alert("Out of songs!");
-    };
+            // alert("Out of songs!");
+            setGameOver(true);
+        };
 
     // for version where user can skip songs and come back
     // const correctGuess = () =>
@@ -90,6 +95,8 @@ const GuessingGame = (props) => {
             <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
             
             <button text="skip song" onClick={skipSong}>Skip Song</button>
+
+            <GameComplete songsList={props.songsList} gameOver={gameOver}></GameComplete>
             {/* <button onClick={manipulatePlay}>Test button</button> */}
         </>
     );
