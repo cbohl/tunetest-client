@@ -3,6 +3,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
+import GameWelcome from "./GameWelcome";
 import GuessSong from "./GuessSong";
 import GameComplete from "./GameComplete";
 import styles from "./GuessingGame.module.css";
@@ -21,11 +22,11 @@ const GuessingGame = (props) => {
 
 
     const nextSong = () => {
-        clickPlay();
         props.songsList[songIndex].isCorrect = true;
-
+        
         console.log("Song index", songIndex, "songs list length", props.songsList.length);
         if(songIndex < props.songsList.length -1){
+            clickPlay();
             console.log("inside");
             setSongIndex(songIndex + 1);
         }else
@@ -65,6 +66,7 @@ const GuessingGame = (props) => {
 
     return(
         <>
+            <GameWelcome></GameWelcome>
             <div id="super">
                 <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
                 <h2> Current link {props.songsList[songIndex].midiLink}</h2>
