@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import styles from "./GuessSong.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
+import IncorrectGuessMessage from "./IncorrectGuessMessage";
 
 // Would need to prevent user submitting unless user has correct answer... 
 // so check answer on every character typed and prevent submit unless it works, 
@@ -15,14 +16,15 @@ const GuessSong = (props) => {
     let [guess, setGuess] = useState("");  
 
     const handleGuess = () => {
+        setGuess("");
         if(guess === props.songTitle){
             // clickPlay();
             // alert("Correct!");
-            setGuess("");
             console.log(props.songTitle);
             props.nextSong();
         }else{
             console.log("Incorrect guess"); 
+
         }
     };
 
@@ -103,6 +105,10 @@ const GuessSong = (props) => {
                         </div>
                     }
                 </span>
+            </div>
+            <div>
+                <h1> Bad guess!</h1>
+                <IncorrectGuessMessage />
             </div>
         </div>
     );
