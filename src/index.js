@@ -70,10 +70,10 @@ console.log("list", createGameList(beatlesSongsList));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <midi-player
+        {/* <midi-player
             src="https://bitmidi.com/uploads/112561.mid"
         >
-        </midi-player>
+        </midi-player> */}
         {/* <midi-player
             src="public/ParadiseCity.mid"
         >

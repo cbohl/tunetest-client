@@ -63,19 +63,21 @@ const GuessingGame = (props) => {
     const manipulatePlay = () => {
         console.log("test");
         // console.log(
-        //     document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
-        // );
-        // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
-        // // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
+            //     document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
+            // );
+            // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+            // // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
+            
+        };
         
-    };
+        return(
+            <>
+            <Toaster />
 
-    return(
-        <>
             {/* <div className={ classNames.bind(styles)({
                 "hidden": gameStart
             }) }> */}
-                <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
+            <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
             {/* </div> */}
 
             <div className={ classNames.bind(styles)({
@@ -108,10 +110,9 @@ const GuessingGame = (props) => {
                         );
                     })}
                 </div>
-                <button text="skip song" onClick={skipSong}>Skip Song</button>
-                <Toaster />
                 {/* <button onClick={manipulatePlay}>Test button</button> */}
                 <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong} toastCorrectGuess={toastCorrectGuess} toastIncorrectGuess={toastIncorrectGuess}/>
+                <button text="skip song" onClick={skipSong}>Skip Song</button>
             </div>
             
 
