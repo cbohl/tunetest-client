@@ -21,9 +21,11 @@ const GuessSong = (props) => {
             // clickPlay();
             // alert("Correct!");
             console.log(props.songTitle);
+            props.toastCorrectGuess();
             props.nextSong();
         }else{
             console.log("Incorrect guess"); 
+            props.toastIncorrectGuess();
 
         }
     };
@@ -116,7 +118,9 @@ const GuessSong = (props) => {
 
 GuessSong.propTypes = {
     songTitle: PropTypes.string,
-    nextSong: PropTypes.func.isRequired
+    nextSong: PropTypes.func.isRequired,
+    toastCorrectGuess: PropTypes.func,
+    toastIncorrectGuess: PropTypes.func
 };  
 
 export default GuessSong;

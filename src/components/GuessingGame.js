@@ -3,6 +3,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
+import toast, { Toaster } from 'react-hot-toast';
 import GameWelcome from "./GameWelcome";
 import GuessSong from "./GuessSong";
 import GameComplete from "./GameComplete";
@@ -16,6 +17,9 @@ const GuessingGame = (props) => {
     let [gameOver, setGameOver] = useState(false);
 
     console.log("great props", props);
+
+    const toastCorrectGuess = () => toast('Good guess!');
+    const toastIncorrectGuess = () => toast("Incorrect guess!");
 
     const clickPlay = () => {
         document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
@@ -56,14 +60,15 @@ const GuessingGame = (props) => {
     //             < songIndex + 1]
     //     }
 
-    // const manipulatePlay = () => {
-    //     console.log("test");
-    //     console.log(
-    //         document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
-    //     );
-    //     document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
-    //     // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
-    // };
+    const manipulatePlay = () => {
+        console.log("test");
+        // console.log(
+        //     document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
+        // );
+        // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
+        // // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
+        
+    };
 
     return(
         <>
@@ -104,8 +109,9 @@ const GuessingGame = (props) => {
                     })}
                 </div>
                 <button text="skip song" onClick={skipSong}>Skip Song</button>
+                <Toaster />
                 {/* <button onClick={manipulatePlay}>Test button</button> */}
-                <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong}/>
+                <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong} toastCorrectGuess={toastCorrectGuess} toastIncorrectGuess={toastIncorrectGuess}/>
             </div>
             
 
