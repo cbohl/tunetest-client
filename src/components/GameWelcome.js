@@ -18,7 +18,7 @@ const GameWelcome = (props) => {
         return(
             <div>
                 <h1>Welcome to the Beatles Guessing Game</h1>
-                <button onClick={intitializeGame}>Start game</button>
+                <button id="StartButton"onClick={intitializeGame}>Start game</button>
             </div>
         )
     }
