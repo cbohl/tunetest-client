@@ -6,7 +6,7 @@ import classNames from "classnames/bind";
 import toast, { Toaster } from 'react-hot-toast';
 import GameWelcome from "./GameWelcome.tsx";
 import GuessSong from "./GuessSong";
-import GameComplete from "./GameComplete";
+import GameComplete from "./GameComplete,tsx";
 import styles from "./GuessingGame.module.css";
 import "html-midi-player";
 
