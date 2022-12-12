@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import toast, { Toaster } from 'react-hot-toast';
-import GameWelcome from "./GameWelcome";
+import GameWelcome from "./GameWelcome.tsx";
 import GuessSong from "./GuessSong";
 import GameComplete from "./GameComplete";
 import styles from "./GuessingGame.module.css";
