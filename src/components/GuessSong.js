@@ -43,7 +43,7 @@ const GuessSong = (props) => {
     };
 
     const clickPlay = () => {
-        document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
+        document.querySelector(".NextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
     };
 
     // useEffect(() => {
@@ -97,11 +97,11 @@ const GuessSong = (props) => {
             >
                 <span>
                     { !guess ?
-                        <div id="empty-guess-button" className={styles.emptyGuessButton}>
+                        <div id="EmptyGuessButton" className={styles.emptyGuessButton}>
                             <FontAwesomeIcon icon={faMusic} />
                         </div>
                         :      
-                        <div id="song-guess-submit-button" className={styles.songGuessSubmitButton} onClick={() => handleGuess()}>
+                        <div id="SongGuessSubmitButton" className={styles.SongGuessSubmitButton} onClick={() => handleGuess()}>
                             <FontAwesomeIcon icon={faArrowUp} />
                         </div>
                     }

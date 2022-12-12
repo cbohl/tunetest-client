@@ -13,7 +13,7 @@ const GameWelcome = ({gameStart, setGameStart}: props) => {
     const clickPlay = () => {
         const button = null;
 
-        const midiPlayerElement: HTMLElement = document.querySelector(".midiPlayer  > midi-player") as HTMLElement;
+        const midiPlayerElement: HTMLElement = document.querySelector(".MidiPlayer  > Midi-player") as HTMLElement;
         
         if(midiPlayerElement != null){
             const shadowElement2: ShadowRoot = midiPlayerElement.shadowRoot as ShadowRoot;

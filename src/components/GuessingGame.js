@@ -22,7 +22,7 @@ const GuessingGame = (props) => {
     const toastIncorrectGuess = () => toast("Incorrect guess!");
 
     const clickPlay = () => {
-        document.querySelector(".nextMidiPlayer > midi-player").shadowRoot.querySelector("div > button").click()
+        document.querySelector(".NextMidiPlayer > Midi-player").shadowRoot.querySelector("div > button").click()
     };
 
     const nextSong = () => {
@@ -81,8 +81,8 @@ const GuessingGame = (props) => {
             {/* </div> */}
 
             <div className={ classNames.bind(styles)({
-                "main-game": true,
-                "hidden": !gameStart || gameOver
+                "MainGame": true,
+                "Hidden": !gameStart || gameOver
             }) }>                
                 <div id="super">
                     <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
@@ -96,10 +96,10 @@ const GuessingGame = (props) => {
                     {props.songsList.map((s, i) => { 
                         return(
                             <div className={ classNames.bind(styles)({
-                                "midiPlayer": true,
-                                "displayMidiPlayer": songIndex == i,
-                                "nextMidiPlayer": songIndex == i-1, 
-                                "hiddenMidiPlayer": songIndex != i
+                                "MidiPlayer": true,
+                                "DisplayMidiPlayer": songIndex == i,
+                                "NextMidiPlayer": songIndex == i-1, 
+                                "HiddenMidiPlayer": songIndex != i
                             }) } key = {i}>
                                 <midi-player
                                     src= {s.midiLink}

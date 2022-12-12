@@ -2,10 +2,10 @@
     display: none
 } */
 
-.nextSong {
+/* .NextSong {
     display: none;
     visibility: hidden;
-}
+} */
 
 h3 {
     color: rgb(23, 128, 0);
@@ -20,16 +20,16 @@ h3 {
     visibility: hidden;
 }
 
-.displayMidiPlayer {
+/* .DisplayMidiPlayer {
     
-}
+} */
 
-.hiddenMidiPlayer {
+.HiddenMidiPlayer {
     display: none;
     visibility: hidden;
 }
 
-.hidden {
+.Hidden {
     display: none
 }
 
