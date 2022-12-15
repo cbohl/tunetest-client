@@ -1,6 +1,9 @@
 /* eslint-disable */
 
 import React from "react";
+import styles from "./GameWelcome.module.css";
+// import styles from "./GuessingGame.module.css";
+
 // import PropTypes from "prop-types";
 
 type props = {
@@ -33,10 +36,12 @@ const GameWelcome = ({gameStart, setGameStart}: props) => {
     
     if(gameStart == false){
         return(
-            <div>
-                <h1>Welcome to the Beatles Guessing Game</h1>
-                <button id="StartButton" onClick={intitializeGame}>Start game</button>
-            </div>
+            <>
+                <div>
+                    <h1>Welcome to the Beatles Guessing Game</h1>
+                    <button id="StartButton" onClick={intitializeGame} className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"}> Start game</button>                    
+                </div>
+            </>
         );
     }
     else {

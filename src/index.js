@@ -4,6 +4,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import GuessingGame from "./components/GuessingGame";
+import "./index.css"
 import "html-midi-player";
 
 // console.log(MidiPlayer);
