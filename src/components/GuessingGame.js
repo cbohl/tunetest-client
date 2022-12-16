@@ -72,7 +72,6 @@ const GuessingGame = (props) => {
         
         return(
             <>
-            <Toaster />
 
             {/* <div className={ classNames.bind(styles)({
                 "hidden": gameStart
@@ -84,6 +83,7 @@ const GuessingGame = (props) => {
                 "MainGame": true,
                 "Hidden": !gameStart || gameOver
             }) }>                
+                <Toaster />
                 <div className="flex min-h-screen justify-center">
                     <div className="grid max-h-72 min-h-screen min-w-[100%] grid-rows-4 text-center gap-4">
                         <div className="mt-10">
