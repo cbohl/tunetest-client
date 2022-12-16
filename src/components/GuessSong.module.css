@@ -1,13 +1,20 @@
-.formInput {
-  /* background: green; */
+.FormInput {
   background: rgba(8, 120, 212, 0.281);
-  /* lighten(rgb(92, 92, 189), 5%) */
   color: rgb(54, 54, 222);
-  width: 80%;
+  width: 75%;
   border: 0;
   padding: 20px 40px;
   margin: 0;
-  
+}
+
+.SongGuessSubmitContainer {
+  width: 80%;
+  background-color: rgb(61, 160, 48);
+}
+
+/* lighten(rgb(92, 92, 189), 5%) */
+
+/* background: green; */
   /* &:focus {
     outline: none;
   }
@@ -16,12 +23,9 @@
     color: rgb(143, 143, 214);
     font-weight: 100;
   } */
-}
+/* 
 
-.songGuessSubmitContainer {
-  width: 20%;
-  background-color: rgb(212, 212, 255);
-}
+
 
 .songGuessSubmitContainer span {
     flex-direction: row;
@@ -29,28 +33,28 @@
     align-items: center;
     text-align: center;
     transition: all 0.2s ease-in;
-}
+} */
 
 
-.songGuessSubmit span div {
+/* .songGuessSubmit span div {
   font-size: 25px;
   color: rgb(153, 153, 248);
-}
+} */
 
 /* .emptyGuessButton {
   display: none;
 } */
 
-.SongGuessSubmitButton {
+/* .SongGuessSubmitButton {
   cursor:pointer;
-}
+} */
 
 
-background: transparent;
+/* background: transparent;
 color: rgb(23, 210, 79);
 font-weight: 100;
 width: 100%;
-border: 0;
+border: 0; */
 
   /* .next-button {
     background: transparent;

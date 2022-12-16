@@ -38,12 +38,12 @@ const GameWelcome = ({gameStart, setGameStart}: props) => {
         return(
             <>
                 <div className="flex min-h-screen justify-center">
-                    <div className="grid max-w-3xl max-h-72 grid-rows-3 text-center">
-                        <div>
-                            <h1>Welcome to the Beatles Guessing Game</h1>
+                    <div className="grid max-w-3xl min-w-[60%] max-h-72 grid-rows-3 text-center">
+                        <div className="mt-10">
+                            <h1>Welcome to The Beatles Guessing Game!</h1>
                         </div>
                         <div>
-                            <button id="StartButton" onClick={intitializeGame} className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"}> Start game</button>                    
+                            <button id="StartButton" onClick={intitializeGame} className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover-cursor"}> Start game</button>                    
                         </div>
                         <div>
                             <img src="https://api.time.com/wp-content/uploads/2015/07/beatles-01.jpg"></img>

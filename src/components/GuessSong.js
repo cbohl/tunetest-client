@@ -78,11 +78,11 @@ const GuessSong = (props) => {
     // });
 
     return(
-        <div>
+        <div className="content-center">
             <div>
                 <input
                     id="song-guess-text"
-                    className={styles.formInput}
+                    className={styles.FormInput}
                     type="text"
                     name="Song Guess"
                     placeholder="ENTER YOUR GUESS HERE"
@@ -90,27 +90,21 @@ const GuessSong = (props) => {
                     onChange={e => { setGuess(e.target.value); adjustSubmitButtons(); }}
                 ></input>
             </div>
-            <div
+            <div    
                 id="song-guess-submit-container"
-                className={styles.songGuessSubmitContainer}
+                className="grid place-items-center"
                 type="submit"
             >
-                <span>
-                    { !guess ?
-                        <div id="EmptyGuessButton" className={styles.emptyGuessButton}>
-                            <FontAwesomeIcon icon={faMusic} />
-                        </div>
-                        :      
-                        <div id="SongGuessSubmitButton" className={styles.SongGuessSubmitButton} onClick={() => handleGuess()}>
-                            <FontAwesomeIcon icon={faArrowUp} />
-                        </div>
-                    }
-                </span>
+                { !guess ?
+                    <div id="EmptyGuessButton" className="bg-red-500 text-white font-bold py-2 px-4 rounded w-3/4">
+                        <FontAwesomeIcon icon={faMusic} />
+                    </div>
+                    :      
+                    <div id="SongGuessSubmitButton" className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4 cursor-pointer`} onClick={() => handleGuess()}>
+                        <FontAwesomeIcon icon={faArrowUp} />
+                    </div>
+                }
             </div>
-            {/* <div>
-                <h1> Bad guess!</h1>
-                <IncorrectGuessMessage />
-            </div> */}
         </div>
     );
 };
@@ -124,3 +118,8 @@ GuessSong.propTypes = {
 
 export default GuessSong;
 
+
+{/* <div>
+    <h1> Bad guess!</h1>
+    <IncorrectGuessMessage />
+</div> */}

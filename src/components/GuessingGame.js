@@ -84,35 +84,42 @@ const GuessingGame = (props) => {
                 "MainGame": true,
                 "Hidden": !gameStart || gameOver
             }) }>                
+                <div className="flex min-h-screen justify-center">
+                    <div className="grid max-h-72 min-h-screen min-w-[100%] grid-rows-4 text-center gap-4">
+                        <div className="mt-10">
+                            {props.songsList.map((s, i) => { 
+                                return(
+                                    <div className={ classNames.bind(styles)({
+                                        "MidiPlayer": true,
+                                        "DisplayMidiPlayer": songIndex == i,
+                                        "NextMidiPlayer": songIndex == i-1, 
+                                        "HiddenMidiPlayer": songIndex != i
+                                    }) } key = {i}>
+                                        <midi-player
+                                            src= {s.midiLink}
+                                            loop
+                                        >
+                                        </midi-player>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="content-around">
+                            <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong} toastCorrectGuess={toastCorrectGuess} toastIncorrectGuess={toastIncorrectGuess}/>
+                        </div>
+                        <div>
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={skipSong}>Skip Song</button>
+                        </div>
+                    </div>
+                </div>
+                    {/* <button onClick={manipulatePlay}>Test button</button> */}
                 <div id="super">
                     <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
                     <h2> Current link {props.songsList[songIndex].midiLink}</h2>
                     <h3> Current index {songIndex}</h3>
-                </div>
-
-                <div>
                     <h2> Test </h2>
                     <h2> Test2 </h2>
-                    {props.songsList.map((s, i) => { 
-                        return(
-                            <div className={ classNames.bind(styles)({
-                                "MidiPlayer": true,
-                                "DisplayMidiPlayer": songIndex == i,
-                                "NextMidiPlayer": songIndex == i-1, 
-                                "HiddenMidiPlayer": songIndex != i
-                            }) } key = {i}>
-                                <midi-player
-                                    src= {s.midiLink}
-                                    loop
-                                >
-                                </midi-player>
-                            </div>
-                        );
-                    })}
                 </div>
-                {/* <button onClick={manipulatePlay}>Test button</button> */}
-                <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong} toastCorrectGuess={toastCorrectGuess} toastIncorrectGuess={toastIncorrectGuess}/>
-                <button text="skip song" onClick={skipSong}>Skip Song</button>
             </div>
             
 
