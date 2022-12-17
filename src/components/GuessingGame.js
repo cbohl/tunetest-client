@@ -16,8 +16,6 @@ const GuessingGame = (props) => {
     let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
 
-    console.log("great props", props);
-
     const toastCorrectGuess = () => toast('Good guess!');
     const toastIncorrectGuess = () => toast("Incorrect guess!");
 
@@ -28,56 +26,26 @@ const GuessingGame = (props) => {
     const nextSong = () => {
         props.songsList[songIndex].isCorrect = true;
         
-        console.log("Song index", songIndex, "songs list length", props.songsList.length);
         if(songIndex < props.songsList.length -1){
             clickPlay();
-            console.log("inside");
             setSongIndex(songIndex + 1);
         }else{
             setGameOver(true);
-            // alert("Out of songs!");
         }
     };
 
     const skipSong = () => {
         if(songIndex < props.songsList.length -1){
             clickPlay();
-            console.log("inside");
             setSongIndex(songIndex + 1);
         }else
-            // alert("Out of songs!");
             setGameOver(true);
-        };
-
-    // for version where user can skip songs and come back
-    // const correctGuess = () =>
-    //     clickPlay();
-        // props.songsList[songIndex].isCorrect = true;
-        
-    //     // for
-    //     for(i=0; i < songList.length; i++){
-    //         if(i < songIndex.length - 1)
-    //             < songIndex + 1]
-    //     }
-
-    const manipulatePlay = () => {
-        console.log("test");
-        // console.log(
-            //     document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button")
-            // );
-            // document.querySelector("#root > div.next-song > midi-player").shadowRoot.querySelector("div > button").click();
-            // // document.querySelector("#root > midi-player:nth-child(5)").shadowRoot.querySelector("div > button").click();
-            
         };
         
         return(
             <>
 
-            {/* <div className={ classNames.bind(styles)({
-                "hidden": gameStart
-            }) }> */}
             <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
-            {/* </div> */}
 
             <div className={ classNames.bind(styles)({
                 "MainGame": true,
@@ -112,17 +80,15 @@ const GuessingGame = (props) => {
                         </div>
                     </div>
                 </div>
-                    {/* <button onClick={manipulatePlay}>Test button</button> */}
-                <div id="super">
+                {/* <div id="super">
                     <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
                     <h2> Current link {props.songsList[songIndex].midiLink}</h2>
                     <h3> Current index {songIndex}</h3>
                     <h2> Test </h2>
                     <h2> Test2 </h2>
-                </div>
+                </div> */}
             </div>
             
-
             <GameComplete songsList={props.songsList} gameOver={gameOver}></GameComplete>
         </>
     );

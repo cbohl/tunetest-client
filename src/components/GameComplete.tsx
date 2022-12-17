@@ -16,8 +16,6 @@ interface Song {
 }
 
 const GameComplete = ({songsList, gameOver}: props) => {
-    console.log('outsidesongslist', songsList)
-    console.log("is game over", gameOver)
 
     const totalGuessesCorrect = () => {
         let numberCorrect = 0
@@ -41,8 +39,6 @@ const GameComplete = ({songsList, gameOver}: props) => {
                                 <h1>{totalGuessesCorrect()}</h1>
                             </div>
                         <div>
-                            {/* <h1>is game over</h1>
-                            <h2>{gameOver.toString()}</h2> */}
                             <h1>Thanks for playing!</h1>
                         </div>
                         <div>
@@ -50,18 +46,6 @@ const GameComplete = ({songsList, gameOver}: props) => {
                         </div>
                     </div>
                 </div>
-
-
-
-                {/* <div>
-                    <h1>is game over</h1>
-                    <h2>{gameOver.toString()}</h2>
-                    <h4>Guesses Correct</h4>
-                    <h1>{totalGuessesCorrect()}</h1>
-                    <div>
-                        <img src = "https://api.time.com/wp-content/uploads/2015/07/beatles-06.jpg"></img>
-                    </div>
-                </div> */}
             </>
         )
     } else{
@@ -69,11 +53,4 @@ const GameComplete = ({songsList, gameOver}: props) => {
     }
 }
 
-
 export default GameComplete;
-
-
-// GameComplete.propTypes = {
-//     songsList: PropTypes.array,
-//     gameOver: PropTypes.bool
-// };
