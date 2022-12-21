@@ -5,6 +5,9 @@ import ReactDOM from "react-dom/client";
 import GuessingGame from "./components/GuessingGame";
 import "./index.css"
 import "html-midi-player";
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
+
 
 class Song {
     constructor(title, midiLink) {
@@ -12,6 +15,22 @@ class Song {
         this.midiLink = midiLink;
     }
 }
+
+
+// const SONGS = gql`
+//   query GetSongs {
+//     songs {
+//       id
+//       title
+//     }
+//   }
+// `;
+
+// console.log(SONGS);
+
+
+
+
 
 let song1 = new Song("Hey Jude", "https://bitmidi.com/uploads/16427.mid");
 let song2 = new Song("Eight Days a Week", "https://bitmidi.com/uploads/16425.mid");
@@ -25,9 +44,16 @@ const createGameList = function (songList) {
     return songList;
 };
 
+const client = new ApolloClient({
+    uri: "/graphql",
+    cache: new InMemoryCache()
+  });
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <GuessingGame songsList={createGameList(beatlesSongsList)} />
+        <ApolloProvider client={client}>
+            <GuessingGame songsList={createGameList(beatlesSongsList)} />
+        </ApolloProvider>
     </React.StrictMode>
 );
