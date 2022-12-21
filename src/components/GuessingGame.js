@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import toast, { Toaster } from 'react-hot-toast';
@@ -10,11 +10,30 @@ import GameComplete from "./GameComplete.tsx";
 import styles from "./GuessingGame.module.css";
 import "html-midi-player";
 
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
+
+
+const SONGS = gql`
+    query GetSongs {
+    songs {
+        id
+        title
+    }
+    }
+`;
 
 const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
     let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
+
+    // useEffect(() => {
+    //     console.log("HERE IT IS", SONGS);
+    // });
+
+    const { data, loading, error } = useQuery(SONGS);
+
 
     const toastCorrectGuess = () => toast('Good guess!');
     const toastIncorrectGuess = () => toast("Incorrect guess!");
@@ -35,6 +54,7 @@ const GuessingGame = (props) => {
     };
 
     const skipSong = () => {
+        console.log(data)
         if(songIndex < props.songsList.length -1){
             clickPlay();
             setSongIndex(songIndex + 1);
@@ -44,6 +64,10 @@ const GuessingGame = (props) => {
         
         return(
             <>
+
+            {/* { data.songs.map(({id, name}) => {
+                <h2> {name} </h2>
+            })} */}
 
             <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
 
