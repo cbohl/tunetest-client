@@ -19,6 +19,7 @@ const GET_SONGS = gql`
     songs {
         id
         title
+        midiFileUrl
     }
     }
 `;
@@ -35,6 +36,7 @@ const GuessingGame = (props) => {
     useEffect(() => {
         if(loading === false && data){
             console.log("setting ssongs!");
+            console.log(data)
 
             // debugger;
 
@@ -43,11 +45,12 @@ const GuessingGame = (props) => {
             let songs4 = []
             // let songs5 = null
 
-            songs3.map(({id, title}, i) => {
+            songs3.map(({id, title, midiFileUrl}, i) => {
                 blankSong.id = id
                 blankSong.title = title
                 blankSong.isCorrectlyGuessed = false
                 blankSong.isCurrent = false
+                blankSong.midiLink = midiFileUrl
                 console.log("1", songs4)
                 console.log("2", blankSong)
                 songs4.push(blankSong)
@@ -90,9 +93,9 @@ const GuessingGame = (props) => {
     };
 
     const nextSong = () => {
-        props.songsList[songIndex].isCorrect = true;
+        songs2[songIndex].isCorrect = true;
         
-        if(songIndex < props.songsList.length -1){
+        if(songIndex < songs2.length -1){
             clickPlay();
             setSongIndex(songIndex + 1);
         }else{
@@ -103,7 +106,7 @@ const GuessingGame = (props) => {
     const skipSong = () => {
         console.log(data)
         // debugger;
-        if(songIndex < props.songsList.length -1){
+        if(songIndex < songs2.length -1){
             clickPlay();
             setSongIndex(songIndex + 1);
         }else
@@ -111,80 +114,88 @@ const GuessingGame = (props) => {
         };
         
         return(
-            <>
-
+        
             <div>
-                <p>test</p>
-                {/* <p> */}
-                    { songs2.map(({id, title}, i) => {
-                        return (
-                            <div key={i}>
-                                <h1> hi there!</h1>
-                                <h2> {id}</h2>
-                                <h2> {title} </h2>
-                            </div>
-                        )
-                    })}
-                {/* </p> */}
-                <h2> {songs2.length}</h2>
-            </div>
-
-            <div>
-                {/* {songs2 != [] ?
-                    <p>{songs2[1].title}</p>
-                :
-                    <p> nothing yet</p>
-                } */}
-                
-                {/* <p>{songs2?[1].name}</p> */}
-            </div>
-
-            <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
-
-            <div className={ classNames.bind(styles)({
-                "MainGame": true,
-                "Hidden": !gameStart || gameOver
-            }) }>                
-                <Toaster />
-                <div className="flex min-h-screen justify-center">
-                    <div className="grid max-h-72 min-h-screen min-w-[100%] grid-rows-4 text-center gap-4">
-                        <div className="mt-10">
-                            {props.songsList.map((s, i) => { 
-                                return(
-                                    <div className={ classNames.bind(styles)({
-                                        "MidiPlayer": true,
-                                        "DisplayMidiPlayer": songIndex == i,
-                                        "NextMidiPlayer": songIndex == i-1, 
-                                        "HiddenMidiPlayer": songIndex != i
-                                    }) } key = {i}>
-                                        <midi-player
-                                            src= {s.midiLink}
-                                            loop
-                                        >
-                                        </midi-player>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="content-around">
-                            <GuessSong songTitle={props.songsList[songIndex].title} nextSong={nextSong} toastCorrectGuess={toastCorrectGuess} toastIncorrectGuess={toastIncorrectGuess}/>
-                        </div>
-                        <div>
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={skipSong}>Skip Song</button>
-                        </div>
-                    </div>
+                <div>
+                    <p>test</p>
+                    {/* <p> */}
+                        { songs2.map(({id, title}, i) => {
+                            return (
+                                <div key={i}>
+                                    <h1> hi there!</h1>
+                                    <h2> {id}</h2>
+                                    <h2> {title} </h2>
+                                </div>
+                            )
+                        })}
+                    {/* </p> */}
+                    <h2> {songs2.length}</h2>
                 </div>
-                {/* <div id="super">
-                    <h1 className="testclass" id="special"> Current song {props.songsList[songIndex].title}</h1>
-                    <h2> Current link {props.songsList[songIndex].midiLink}</h2>
-                    <h3> Current index {songIndex}</h3>
-                    <h2> Test </h2>
-                    <h2> Test2 </h2>
-                </div> */}
+
+                <div>
+                    {/* {songs2 != [] ?
+                        <p>{songs2[1].title}</p>
+                    :
+                        <p> nothing yet</p>
+                    } */}
+                    
+                    {/* <p>{songs2?[1].name}</p> */}
+                </div>
+
+                <div>
+                { songs2.length > 0 ? 
+                    <div>
+                        <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
+
+                        <div className={ classNames.bind(styles)({
+                            "MainGame": true,
+                            "Hidden": !gameStart || gameOver
+                        }) }>                
+                            <Toaster />
+                            <div className="flex min-h-screen justify-center">
+                                <div className="grid max-h-72 min-h-screen min-w-[100%] grid-rows-4 text-center gap-4">
+                                    <div className="mt-10">
+                                        {songs2.map((s, i) => { 
+                                            return(
+                                                <div className={ classNames.bind(styles)({
+                                                    "MidiPlayer": true,
+                                                    "DisplayMidiPlayer": songIndex == i,
+                                                    "NextMidiPlayer": songIndex == i-1, 
+                                                    "HiddenMidiPlayer": songIndex != i
+                                                }) } key = {i}>
+                                                    <midi-player
+                                                        src= {"https://bitmidi.com/uploads/16425.mid"}
+                                                        loop
+                                                    >
+                                                    </midi-player>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="content-around">
+                                        <GuessSong songTitle={songs2[songIndex].title} nextSong={nextSong} toastCorrectGuess={toastCorrectGuess} toastIncorrectGuess={toastIncorrectGuess}/>
+                                    </div>
+                                    <div>
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={skipSong}>Skip Song</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* <div id="super">
+                                <h1 className="testclass" id="special"> Current song {songs2[songIndex].title}</h1>
+                                <h2> Current link {songs2[songIndex].midiLink}</h2>
+                                <h3> Current index {songIndex}</h3>
+                                <h2> Test </h2>
+                                <h2> Test2 </h2>
+                            </div> */}
+                        </div>
+                        
+                        <GameComplete songsList={songs2} gameOver={gameOver}></GameComplete>
+                    </div>
+                :
+                        <h1>Loading data</h1>
+                }
             </div>
-            
-            <GameComplete songsList={props.songsList} gameOver={gameOver}></GameComplete>
-        </>
+        </div>
     );
 };
 
