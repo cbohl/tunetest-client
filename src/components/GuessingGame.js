@@ -14,7 +14,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useQuery, gql } from "@apollo/client";
 
 
-const SONGS = gql`
+const GET_SONGS = gql`
     query GetSongs {
     songs {
         id
@@ -27,12 +27,59 @@ const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
     let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
+    let [songs2, setSongs2] = useState([])
 
-    // useEffect(() => {
-    //     console.log("HERE IT IS", SONGS);
-    // });
+    const { data, loading, error } = useQuery(GET_SONGS);
 
-    const { data, loading, error } = useQuery(SONGS);
+
+    useEffect(() => {
+        if(loading === false && data){
+            console.log("setting ssongs!");
+
+            // debugger;
+
+            let blankSong = {}
+            let songs3 = data.songs
+            let songs4 = []
+            // let songs5 = null
+
+            songs3.map(({id, title}, i) => {
+                blankSong.id = id
+                blankSong.title = title
+                blankSong.isCorrectlyGuessed = false
+                blankSong.isCurrent = false
+                console.log("1", songs4)
+                console.log("2", blankSong)
+                songs4.push(blankSong)
+                console.log("3", songs4)
+                // debugger;
+                blankSong = {}
+                // songs4[i].id = id
+                // songs4[i].title = title
+            })
+
+            // songs5 = songs4
+
+
+            console.log("songs4", songs4)
+            // songs3.forEach(
+            //     function(song){
+            //         song.isCorrectlyGuessed = false;
+            //         song.isCurrent = false;
+            //     }
+            // );
+            
+            setSongs2(songs4)
+        }
+        console.log("in use effect")
+    }, [data]);
+
+
+
+            // songs3[0].isCurrent = true;
+
+        // console.log("HERE IT IS", SONGS);
+
 
 
     const toastCorrectGuess = () => toast('Good guess!');
@@ -55,6 +102,7 @@ const GuessingGame = (props) => {
 
     const skipSong = () => {
         console.log(data)
+        // debugger;
         if(songIndex < props.songsList.length -1){
             clickPlay();
             setSongIndex(songIndex + 1);
@@ -65,9 +113,31 @@ const GuessingGame = (props) => {
         return(
             <>
 
-            {/* { data.songs.map(({id, name}) => {
-                <h2> {name} </h2>
-            })} */}
+            <div>
+                <p>test</p>
+                {/* <p> */}
+                    { songs2.map(({id, title}, i) => {
+                        return (
+                            <div key={i}>
+                                <h1> hi there!</h1>
+                                <h2> {id}</h2>
+                                <h2> {title} </h2>
+                            </div>
+                        )
+                    })}
+                {/* </p> */}
+                <h2> {songs2.length}</h2>
+            </div>
+
+            <div>
+                {/* {songs2 != [] ?
+                    <p>{songs2[1].title}</p>
+                :
+                    <p> nothing yet</p>
+                } */}
+                
+                {/* <p>{songs2?[1].name}</p> */}
+            </div>
 
             <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
 
