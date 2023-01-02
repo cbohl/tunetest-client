@@ -16,21 +16,31 @@ import { useQuery, gql } from "@apollo/client";
 
 const GET_SONGS = gql`
     query GetSongs {
-    songs {
-        id
-        title
-        midiFileUrl
-    }
-    }
-`;
+        songs {
+            id
+            title
+            midiFileUrl
+        }
+    }`;
 
-const GuessingGame = (props) => {
+const GET_USERS = gql`
+    query allUsers {
+        allUsers{
+            email 
+            name
+        }
+    }
+    `;
+
+
+    const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
     let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
     let [songs2, setSongs2] = useState([])
 
-    const { data, loading, error } = useQuery(GET_SONGS);
+    // const { data, loading, error } = useQuery(GET_SONGS);
+    const { data, loading, error } = useQuery(GET_USERS);
 
 
     useEffect(() => {
