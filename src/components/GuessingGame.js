@@ -19,7 +19,7 @@ const GET_SONGS = gql`
         songs {
             id
             title
-            midiFileUrl
+            midiFileURL
         }
     }`;
 
@@ -32,6 +32,15 @@ const GET_USERS = gql`
     }
     `;
 
+const GET_ARTISTS = gql`
+    query allArtists {
+        allArtists {
+            songs {
+                title
+                midiFilePath
+            }
+        }
+    }`;
 
     const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
@@ -40,27 +49,28 @@ const GET_USERS = gql`
     let [songs2, setSongs2] = useState([])
 
     // const { data, loading, error } = useQuery(GET_SONGS);
-    const { data, loading, error } = useQuery(GET_USERS);
+    const { data, loading, error } = useQuery(GET_ARTISTS);
 
 
     useEffect(() => {
         if(loading === false && data){
             console.log("setting ssongs!");
-            console.log(data)
+            console.log("here is the data", data)
 
-            // debugger;
+            debugger;
 
             let blankSong = {}
-            let songs3 = data.songs
+            let songs3 = data.allArtists[0].songs
+            console.log("here is songs3", songs3)
             let songs4 = []
             // let songs5 = null
 
-            songs3.map(({id, title, midiFileUrl}, i) => {
+            songs3.map(({id, title, midiFilePath}, i) => {
                 blankSong.id = id
                 blankSong.title = title
                 blankSong.isCorrectlyGuessed = false
                 blankSong.isCurrent = false
-                blankSong.midiLink = midiFileUrl
+                blankSong.midiFilePath = midiFilePath
                 console.log("1", songs4)
                 console.log("2", blankSong)
                 songs4.push(blankSong)
@@ -174,7 +184,7 @@ const GET_USERS = gql`
                                                     "HiddenMidiPlayer": songIndex != i
                                                 }) } key = {i}>
                                                     <midi-player
-                                                        src= {s.midiLink}
+                                                        src= {"http://localhost:5000/" + s.midiFilePath}
                                                         loop
                                                     >
                                                     </midi-player>
