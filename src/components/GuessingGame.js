@@ -164,7 +164,7 @@ const GuessingGame = (props) => {
                                                     "HiddenMidiPlayer": songIndex != i
                                                 }) } key = {i}>
                                                     <midi-player
-                                                        src= {"https://bitmidi.com/uploads/16425.mid"}
+                                                        src= {s.midiLink}
                                                         loop
                                                     >
                                                     </midi-player>
