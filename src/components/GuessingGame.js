@@ -57,7 +57,7 @@ const GET_ARTISTS = gql`
             console.log("setting ssongs!");
             console.log("here is the data", data)
 
-            debugger;
+            // debugger;
 
             let blankSong = {}
             let songs3 = data.allArtists[0].songs
