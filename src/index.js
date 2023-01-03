@@ -2,19 +2,21 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom"
 import GuessingGame from "./components/GuessingGame";
+import App from "./components/App";
 import "./index.css"
 import "html-midi-player";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useQuery, gql } from "@apollo/client";
 
 
-class Song {
-    constructor(title, midiLink) {
-        this.title = title;
-        this.midiLink = midiLink;
-    }
-}
+// class Song {
+//     constructor(title, midiLink) {
+//         this.title = title;
+//         this.midiLink = midiLink;
+//     }
+// }
 
 
 // const SONGS = gql`
@@ -32,17 +34,17 @@ class Song {
 
 
 
-let song1 = new Song("Hey Jude", "https://bitmidi.com/uploads/16427.mid");
-let song2 = new Song("Eight Days a Week", "https://bitmidi.com/uploads/16425.mid");
-let song3 = new Song("With a Little Help from My Friends", "https://bitmidi.com/uploads/16431.mid");
+// let song1 = new Song("Hey Jude", "https://bitmidi.com/uploads/16427.mid");
+// let song2 = new Song("Eight Days a Week", "https://bitmidi.com/uploads/16425.mid");
+// let song3 = new Song("With a Little Help from My Friends", "https://bitmidi.com/uploads/16431.mid");
 
-let beatlesSongsList = [song1, song2, song3]; 
+// let beatlesSongsList = [song1, song2, song3]; 
 
-const createGameList = function (songList) {
-    songList.forEach(function(song){song.isCorrectlyGuessed = false, song.isCurrent = false});
-    songList[0].isCurrent = true;
-    return songList;
-};
+// const createGameList = function (songList) {
+//     songList.forEach(function(song){song.isCorrectlyGuessed = false, song.isCurrent = false});
+//     songList[0].isCurrent = true;
+//     return songList;
+// };
 
 const client = new ApolloClient({
     uri: "http://localhost:5000/graphql",
@@ -53,8 +55,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
-            {/* <App /> */}
-            <GuessingGame songsList={createGameList(beatlesSongsList)} />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+            {/* <GuessingGame /> */}
         </ApolloProvider>
     </React.StrictMode>
 );
