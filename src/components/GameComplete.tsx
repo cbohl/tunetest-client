@@ -2,6 +2,8 @@
 
 import React, {useState} from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 
 interface props {
     songsList: Song[];
@@ -40,7 +42,7 @@ const GameComplete = ({songsList, gameOver}: props) => {
                             </div>
                         <div>
                             <h1>Thanks for playing!</h1>
-                            <a href={'/'}>Go back to main page</a>
+                            <Link to={'/'}>Go back to main page</Link>
                         </div>
                         <div>
                             <img src = "https://api.time.com/wp-content/uploads/2015/07/beatles-06.jpg"></img>
