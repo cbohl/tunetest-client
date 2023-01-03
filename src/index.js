@@ -2,14 +2,24 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom"
-import GuessingGame from "./components/GuessingGame";
-import App from "./components/App";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import ErrorPage from "./error-page";
+// import GuessingGame from "./components/GuessingGame";
+import Root from "./routes/root";
+
+// import App from "./components/App";
 import "./index.css"
 import "html-midi-player";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useQuery, gql } from "@apollo/client";
 
+const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <ErrorPage />
+    },
+  ]);
 
 // class Song {
 //     constructor(title, midiLink) {
@@ -55,9 +65,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+            <RouterProvider router={router} />
             {/* <GuessingGame /> */}
         </ApolloProvider>
     </React.StrictMode>
