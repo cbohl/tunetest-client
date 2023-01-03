@@ -40,6 +40,7 @@ const GameComplete = ({songsList, gameOver}: props) => {
                             </div>
                         <div>
                             <h1>Thanks for playing!</h1>
+                            <a href={'/'}>Go back to main page</a>
                         </div>
                         <div>
                             <img src = "https://api.time.com/wp-content/uploads/2015/07/beatles-06.jpg"></img>

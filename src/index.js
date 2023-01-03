@@ -4,7 +4,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from "./error-page";
-// import GuessingGame from "./components/GuessingGame";
+
+import Contact from "./routes/contact";
+
+import GuessingGame from "./components/GuessingGame";
 import Root from "./routes/root";
 
 // import App from "./components/App";
@@ -19,6 +22,14 @@ const router = createBrowserRouter([
       element: <Root />,
       errorElement: <ErrorPage />
     },
+    {
+        path: "contacts/:contactId",
+        element: <Contact />,
+    },
+    {
+        path: "game",
+        element: <GuessingGame />
+    }
   ]);
 
 // class Song {
