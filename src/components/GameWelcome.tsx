@@ -1,14 +1,16 @@
 /* eslint-disable */
 
 import React from "react";
+import { isAsteriskToken } from "typescript";
 // import styles from "./GameWelcome.module.css";
 
 interface Props {
     gameStart: boolean;
     setGameStart: any;
+    artist: any;
 }
 
-const GameWelcome = ({gameStart, setGameStart}: Props) => {
+const GameWelcome = ({gameStart, setGameStart, artist}: Props) => {
     
     const clickPlay = () => {
         let button: HTMLElement | null;
@@ -36,7 +38,7 @@ const GameWelcome = ({gameStart, setGameStart}: Props) => {
                 <div className="flex min-h-screen justify-center">
                     <div className="grid max-w-3xl min-w-[60%] max-h-72 grid-rows-3 text-center">
                         <div className="mt-10">
-                            <h1>Welcome to The Beatles Guessing Game!</h1>
+                            <h1>Welcome to the  {artist.firstName} {artist.lastName} Guessing Game!</h1>
                         </div>
                         <div>
                             <button id="StartButton" onClick={intitializeGame} className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover-cursor"}> Start game</button>                    

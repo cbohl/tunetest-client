@@ -36,6 +36,8 @@ const GET_USERS = gql`
 const GET_ARTISTS = gql`
     query allArtists {
         allArtists {
+            firstName
+            lastName
             songs {
                 title
                 midiFilePath
@@ -48,9 +50,11 @@ const GET_ARTISTS = gql`
     let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
     let [songs2, setSongs2] = useState([])
+    let [artist, setArtist] = useState()
     let { gameId } = useParams();
 
     console.log("This is the game id!!!", gameId)
+
     // const { data, loading, error } = useQuery(GET_SONGS);
     const { data, loading, error } = useQuery(GET_ARTISTS);
 
@@ -63,7 +67,9 @@ const GET_ARTISTS = gql`
             // debugger;
 
             let blankSong = {}
-            let songs3 = data.allArtists[0].songs
+            let artist1 = data.allArtists[gameId - 1]
+            let blankArtist = {}
+            let songs3 = data.allArtists[gameId - 1].songs
             console.log("here is songs3", songs3)
             let songs4 = []
             // let songs5 = null
@@ -84,10 +90,19 @@ const GET_ARTISTS = gql`
                 // songs4[i].title = title
             })
 
+            // debugger;
+
+            // artist1.map(({id, firstName, lastName}, i) => {
+            //     blankArtist.id = id
+            //     blankArtist.firstName = firstName
+            //     blankArtist.lastName = lastName
+            // })
+
+
             // songs5 = songs4
 
 
-            console.log("songs4", songs4)
+            // console.log("songs4", songs4)
             // songs3.forEach(
             //     function(song){
             //         song.isCorrectlyGuessed = false;
@@ -96,6 +111,7 @@ const GET_ARTISTS = gql`
             // );
             
             setSongs2(songs4)
+            setArtist(artist1)
         }
         console.log("in use effect")
     }, [data]);
@@ -168,7 +184,7 @@ const GET_ARTISTS = gql`
                 <div>
                 { songs2.length > 0 ? 
                     <div>
-                        <GameWelcome setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
+                        <GameWelcome artist={artist} setGameStart={setGameStart} gameStart={gameStart}></GameWelcome>
 
                         <div className={ classNames.bind(styles)({
                             "MainGame": true,
