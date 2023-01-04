@@ -228,7 +228,7 @@ const GET_ARTISTS = gql`
                             </div> */}
                         </div>
                         
-                        <GameComplete songsList={songs2} gameOver={gameOver}></GameComplete>
+                        <GameComplete artist={artist} songsList={songs2} gameOver={gameOver}></GameComplete>
                     </div>
                 :
                         <h1>Loading data</h1>

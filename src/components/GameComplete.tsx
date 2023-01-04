@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 interface props {
+    artist: any;
     songsList: Song[];
     gameOver: boolean;
 }
@@ -17,7 +18,7 @@ interface Song {
     isCorrect: boolean;
 }
 
-const GameComplete = ({songsList, gameOver}: props) => {
+const GameComplete = ({artist, songsList, gameOver}: props) => {
 
     const totalGuessesCorrect = () => {
         let numberCorrect = 0
@@ -45,7 +46,7 @@ const GameComplete = ({songsList, gameOver}: props) => {
                             <a href={'/'}>Go back to main page</a>
                         </div>
                         <div>
-                            <img src = "https://api.time.com/wp-content/uploads/2015/07/beatles-06.jpg"></img>
+                            <img src= {"http://localhost:5000/images/" + artist.lastName + "2.webp"}></img>
                         </div>
                     </div>
                 </div>

@@ -5,12 +5,12 @@ import { isAsteriskToken } from "typescript";
 // import styles from "./GameWelcome.module.css";
 
 interface Props {
+    artist: any;
     gameStart: boolean;
     setGameStart: any;
-    artist: any;
 }
 
-const GameWelcome = ({gameStart, setGameStart, artist}: Props) => {
+const GameWelcome = ({ artist, gameStart, setGameStart}: Props) => {
     
     const clickPlay = () => {
         let button: HTMLElement | null;
@@ -44,7 +44,7 @@ const GameWelcome = ({gameStart, setGameStart, artist}: Props) => {
                             <button id="StartButton" onClick={intitializeGame} className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover-cursor"}> Start game</button>                    
                         </div>
                         <div>
-                            <img src="https://api.time.com/wp-content/uploads/2015/07/beatles-01.jpg"></img>
+                            <img src= {"http://localhost:5000/images/" + artist.lastName + "1.webp"}></img>
                         </div>
                     </div>
                 </div>
