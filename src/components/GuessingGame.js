@@ -9,6 +9,7 @@ import GuessSong from "./GuessSong";
 import GameComplete from "./GameComplete.tsx";
 import styles from "./GuessingGame.module.css";
 import "html-midi-player";
+import { useParams } from 'react-router-dom'
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useQuery, gql } from "@apollo/client";
@@ -47,7 +48,9 @@ const GET_ARTISTS = gql`
     let [gameStart, setGameStart] = useState(false);
     let [gameOver, setGameOver] = useState(false);
     let [songs2, setSongs2] = useState([])
+    let { gameId } = useParams();
 
+    console.log("This is the game id!!!", gameId)
     // const { data, loading, error } = useQuery(GET_SONGS);
     const { data, loading, error } = useQuery(GET_ARTISTS);
 

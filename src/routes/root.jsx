@@ -8,13 +8,13 @@ export default function Root() {
           <nav>
             <ul>
               <li>
-                <Link to={`game`}>Play The Beatles Game</Link>
+                <Link to={`games/1`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Play The Beatles Game</Link>
               </li>
               <li>
-                <a href={`contacts/2`}>Play The Backstreet Boys Game</a>
+                <Link to={'games/2'} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Play The Backstreet Boys Game</Link>
               </li>
               <li>
-                <a href={'contacts/3'}>Play The Easy Songs Game</a>
+                <Link to={'games/3'} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Play The Easy Songs Game</Link>
               </li>
             </ul>
           </nav>

@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <Contact />,
     },
     {
-        path: "game",
+        path: "games/:gameId",
         element: <GuessingGame />
     }
   ]);
