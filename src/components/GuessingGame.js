@@ -156,17 +156,17 @@ const GET_ARTISTS = gql`
         
             <div>
                 <div>
-                    <p>test</p>
+                    {/* <p>test</p> */}
                     {/* <p> */}
-                        { songs2.map(({id, title}, i) => {
-                            return (
-                                <div key={i}>
-                                    <h1> hi there!</h1>
-                                    <h2> {id}</h2>
-                                    <h2> {title} </h2>
-                                </div>
+                        {/* { songs2.map(({id, title}, i) => { */}
+                            // return (
+                                // <div key={i}>
+                                    {/* <h1> hi there!</h1> */}
+                                    {/* <h2> {id}</h2> */}
+                                    {/* <h2> {title} </h2> */}
+                                // </div>
                             )
-                        })}
+                        // })}
                     {/* </p> */}
                     <h2> {songs2.length}</h2>
                 </div>
