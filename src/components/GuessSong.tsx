@@ -15,6 +15,12 @@ interface Props{
 const GuessSong = ({songTitle, nextSong, toastCorrectGuess, toastIncorrectGuess}: Props) => {    
     let [guess, setGuess] = useState("");  
 
+    // document.querySelector('#txtSearch').addEventListener('keypress', function (test) {
+        // if (test.key === 'Enter') {
+          // code for enter
+        // }
+    // });
+
     const handleGuess = () => {
         setGuess("");
         if(guess === songTitle){
@@ -24,6 +30,12 @@ const GuessSong = ({songTitle, nextSong, toastCorrectGuess, toastIncorrectGuess}
             toastIncorrectGuess();
         }
     };
+
+    const downHandler = (e: any) => {
+        if(e.keyCode === 13){
+            handleGuess()
+        }
+    }
 
     return(
         <div className="content-center">
@@ -36,6 +48,7 @@ const GuessSong = ({songTitle, nextSong, toastCorrectGuess, toastIncorrectGuess}
                     placeholder="ENTER YOUR GUESS HERE"
                     value={guess}
                     onChange={e => { setGuess(e.target.value);}}
+                    onKeyDown={e => { downHandler(e); }}
                 ></input>
             </div>
             <div    
