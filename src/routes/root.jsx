@@ -27,8 +27,14 @@ export default function Root() {
               {data.allArtists.map((artist, i) => {
                 return(
                   <li className="rows-span-1" key={i}>
-                    <Link to={ "games/" + (i + 1) } className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Play The {artist.lastName} Game</Link>
-                    <img src= {"http://localhost:5000/images/" + artist.lastName + "2.webp"} className="mx-auto h-full"></img>
+                    <Link to={ "games/" + (i + 1) } className="">
+                      <div className="mx-auto h-30 w-40 overflow-hidden">
+                        <div className="absolute z-30">
+                          <h1 className="absolute text-green-800 font-bold">Play The {artist.lastName} Game</h1>
+                        </div>
+                        <img src= {"http://localhost:5000/images/" + artist.lastName + "2.webp"} className="scale-100 hover:scale-125 ease-in duration-500 z-10"></img>
+                      </div>
+                    </Link>
                   </li>
                 )
               })}
