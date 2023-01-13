@@ -36,6 +36,7 @@ const GET_USERS = gql`
 const GET_ARTISTS = gql`
     query allArtists {
         allArtists {
+            id
             firstName
             lastName
             songs {
