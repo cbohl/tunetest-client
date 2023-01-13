@@ -203,7 +203,7 @@ const GET_ARTISTS = gql`
                                                     "HiddenMidiPlayer": songIndex != i
                                                 }) } key = {i}>
                                                     <midi-player
-                                                        src= {"http://localhost:5000/" + s.midiFilePath}
+                                                        src= {"http://localhost:8080/" + s.midiFilePath}
                                                         loop
                                                     >
                                                     </midi-player>
