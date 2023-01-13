@@ -23,7 +23,7 @@ const GuessSong = ({songTitle, nextSong, toastCorrectGuess, toastIncorrectGuess}
 
     const handleGuess = () => {
         setGuess("");
-        if(guess === songTitle){
+        if(guess.toUpperCase() === songTitle.toUpperCase()){
             toastCorrectGuess();
             nextSong();
         }else{
