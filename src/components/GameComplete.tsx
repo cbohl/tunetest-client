@@ -11,6 +11,15 @@ import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 
 
 
+const GET_ARTIST_SCORE_RECORDS = gql`
+    query GetArtistScoreRecords($artistId: Int) {
+        getArtistScoreRecords(artistId: $artistId) {
+            username
+            score
+        }
+    }
+`
+
 const CREATE_SCORE_RECORD = gql`
     mutation CreateScoreRecord($artistId: Int, $username: String, $score: Int) {
         createScoreRecord(artistId: $artistId, username: $username, score: $score) {
