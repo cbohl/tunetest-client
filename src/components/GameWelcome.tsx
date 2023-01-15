@@ -44,7 +44,7 @@ const GameWelcome = ({ artist, gameStart, setGameStart}: Props) => {
                             <button id="StartButton" onClick={intitializeGame} className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover-cursor"}> Start game</button>                    
                         </div>
                         <div>
-                            <img src= {"http://quiet-moon-2330.fly.dev/static/images/" + artist.lastName + "1.webp"}></img>
+                            <img src= {"https://quiet-moon-2330.fly.dev/static/images/" + artist.lastName + "1.webp"}></img>
                         </div>
                     </div>
                 </div>
