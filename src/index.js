@@ -15,6 +15,11 @@ import "./index.css"
 import "html-midi-player";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useQuery, gql } from "@apollo/client";
+// import * as dotenv from "dotenv";
+// dotenv.config();
+
+console.log("IN INDEX!!!")
+console.log(process.env.REACT_APP_API_URL)
 
 const router = createBrowserRouter([
     {
@@ -68,7 +73,7 @@ const router = createBrowserRouter([
 // };
 
 const client = new ApolloClient({
-    uri: "https://quiet-moon-2330.fly.dev/graphql",
+    uri: process.env.REACT_APP_API_URL + "/graphql",
     cache: new InMemoryCache()
   });
 

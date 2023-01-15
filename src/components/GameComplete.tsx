@@ -137,7 +137,7 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                             </div>
                         </div>
                         {/* <div>
-                            <img src= {"https://quiet-moon-2330.fly.dev/static/images/" + artist.lastName + "2.webp"}></img>
+                            <img src= {process.env.REACT_APP_API_URL + "/static/images/" + artist.lastName + "2.webp"}></img>
                         </div> */}
                     </div>
                 </div>

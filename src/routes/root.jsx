@@ -34,7 +34,7 @@ export default function Root() {
                             {/* <h1 className="absolute text-green-800 font-bold">Play The {artist.lastName} Game</h1> */}
                           </div>
                         {/* </div> */}
-                        <img src= {"https://quiet-moon-2330.fly.dev/static/images/" + artist.lastName + "2.webp"} className="object-cover scale-100 hover:scale-125 ease-in duration-500 z-10"></img>
+                        <img src= {process.env.REACT_APP_API_URL + "/static/images/" + artist.lastName + "2.webp"} className="object-cover scale-100 hover:scale-125 ease-in duration-500 z-10"></img>
                       </div>
                   </li>
                 )
@@ -42,7 +42,7 @@ export default function Root() {
             </ul>
                       {/* <div className="group">
                         <h1 className="absolute text-green-800 font-bold">TEST TEST TEST</h1>
-                        <img class="invisible group-hover:visible" src= {"https://quiet-moon-2330.fly.dev/static/images/" + "Beatles" + "2.webp"} className="scale-100 hover:scale-125 ease-in duration-500 z-10"></img>
+                        <img class="invisible group-hover:visible" src= {process.env.REACT_APP_API_URL + "/static/images/" + "Beatles" + "2.webp"} className="scale-100 hover:scale-125 ease-in duration-500 z-10"></img>
                         <p className="invisible group-hover:visible">I am hidden until my parent is hovered!</p>
                       </div> */}
           </nav>
