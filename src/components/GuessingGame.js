@@ -204,7 +204,7 @@ const GET_ARTISTS = gql`
                                                     "HiddenMidiPlayer": songIndex != i
                                                 }) } key = {i}>
                                                     <midi-player
-                                                        src= {"http://localhost:8080/" + s.midiFilePath}
+                                                        src= {"https://quiet-moon-2330.fly.dev/static/" + s.midiFilePath}
                                                         loop
                                                     >
                                                     </midi-player>

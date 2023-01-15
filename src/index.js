@@ -68,7 +68,7 @@ const router = createBrowserRouter([
 // };
 
 const client = new ApolloClient({
-    uri: "http://localhost:8080/graphql",
+    uri: "https://quiet-moon-2330.fly.dev/graphql",
     cache: new InMemoryCache()
   });
 
