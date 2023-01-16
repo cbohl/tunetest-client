@@ -1,13 +1,14 @@
 /* eslint-disable */
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import { useMutation, gql } from "@apollo/client";
+import { useQuery, useMutation, gql } from "@apollo/client";
 import styles from "./GuessSong.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
+import { query } from "express";
 
 
 
@@ -54,10 +55,20 @@ interface Song {
 }
 
 const GameComplete = ({artist, songsList, gameOver}: props) => {
+    console.log("this is the artist id", artist.id)
+    const { data: queryData, loading: queryLoading, error: queryError } = useQuery(GET_ARTIST_SCORE_RECORDS, {variables: {artistId: artist.id}});
     const [createScoreRecord, { data, loading, error }] = useMutation(CREATE_SCORE_RECORD);
+    let [scoreRecords, setScoreRecords] = useState<any[]>([]);
     let [username, setUsername] = useState("");  
-
     
+    // debugger
+
+
+    console.log("here is the query data", queryData)
+    if(scoreRecords.length > 0){
+        // debugger
+        console.log("here is the scoreRecords", scoreRecords[0].score)
+    }
     const totalGuessesCorrect = () => {
         let numberCorrect = 0
         console.log("guess correct songslist", songsList);
@@ -92,11 +103,30 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
         }
     }
 
+    useEffect(() => {
+        if(queryLoading === false && queryData){
+            setScoreRecords(queryData.getArtistScoreRecords)
+        }
+    })
+
     if(gameOver){
         return(
             <>
                 <div className="flex min-h-screen justify-center">
                     <div className="grid max-w-3xl min-w-[60%] max-h-72 grid-rows-3 text-center">
+                        <div>
+                            <h3> it goes here</h3>
+                            <h3>{scoreRecords[0].score}</h3>
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>                 
                         <div>
                             <div className="mt-5">
                                 <h4>Guesses Correct</h4>
@@ -119,12 +149,12 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                     value={username}
                                     onChange={e => { setUsername(e.target.value);}}
                                     onKeyDown={e => { downHandler(e); }}
-                                ></input>
+                                    ></input>
                             </div>
                             <div    
                                 id="song-guess-submit-container"
                                 className="grid place-items-center"
-                            >
+                                >
                                 { !username ?
                                     <div id="EmptyUsernameButton" className="bg-red-500 text-white font-bold py-2 px-4 rounded w-3/4">
                                         <FontAwesomeIcon icon={faMusic} />
@@ -135,6 +165,19 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                     </div>
                                 }
                             </div>
+                        </div>
+                        <div>
+                            {  
+                                scoreRecords.map((record: any) => {
+                                    return(
+                                        <>
+                                            <h1>{record.username} {record.score}</h1>
+                                            {/* // <h2>{scoreRecords[0].username}</h2> */}
+                                            <h2> Test test test</h2>
+                                        </>
+                                    )    
+                            })
+                            }
                         </div>
                         {/* <div>
                             <img src= {process.env.REACT_APP_API_URL + "/static/images/" + artist.lastName + "2.webp"}></img>
