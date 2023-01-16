@@ -173,7 +173,7 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                             <h1>Thanks for playing!</h1>
                             <a href={'/'}>Go back to main page</a>
                         </div>
-                        {
+                        { !scoreSubmitted ?
                             <div>
                                 <h1>Submit your score!</h1>
                                 <div>
@@ -192,7 +192,7 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                 <div    
                                     id="song-guess-submit-container"
                                     className="grid place-items-center"
-                                    >
+                                >
                                     { !username ?
                                         <div id="EmptyUsernameButton" className="bg-red-500 text-white font-bold py-2 px-4 rounded w-3/4">
                                             <FontAwesomeIcon icon={faMusic} />
@@ -204,6 +204,14 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                     }
                                 </div>
                             </div>
+                            :
+                            <div className="mx-auto block h-64 w-30">
+                                <img src= {process.env.REACT_APP_API_URL + "/static/images/" + artist.lastName + "2.webp"} className="object-cover scale-100 hover:scale-125 ease-in duration-500 z-10"></img>
+                            </div>
+
+                            
+
+
                         }
                         <div>
                             {  
@@ -218,9 +226,6 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                 })
                             }
                         </div>
-                        {/* <div>
-                            <img src= {process.env.REACT_APP_API_URL + "/static/images/" + artist.lastName + "2.webp"}></img>
-                        </div> */}
                     </div>
                 </div>
             </>
