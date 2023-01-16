@@ -60,6 +60,7 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
     const [createScoreRecord, { data, loading, error }] = useMutation(CREATE_SCORE_RECORD);
     let [scoreRecords, setScoreRecords] = useState<any[]>([]);
     let [username, setUsername] = useState("");  
+    let [scoreSubmitted, setScoreSubmitted] = useState(false)
     
     // debugger
 
@@ -84,6 +85,16 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
     const submitScore = () => {
         console.log("this is the artist id", artist.id)
         createScoreRecord({ variables: { artistId: artist.id, username: username, score: totalGuessesCorrect() } });
+        let y = scoreRecords
+        y.push({username: username, score: totalGuessesCorrect()})
+        y = y.slice().sort((a: any, b: any) => {
+            return (a.score < b.score) ? 1: -1
+        })
+        setScoreRecords(y)
+        setScoreSubmitted(true)
+
+        // debugger;
+
     }
 
     const handleScoreSubmit = () => {
@@ -105,9 +116,34 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
 
     useEffect(() => {
         if(queryLoading === false && queryData){
-            setScoreRecords(queryData.getArtistScoreRecords)
+            // queryData.getArtistScoreRecords.sort((a: any, b: any) => {
+            //     if (a.score > b.score){
+            //         return 1
+            //     }
+            //     return -1
+            // }
+
+            // queryData.getArtistScoreRecords.sort((a: any, b: any) => {
+            //     return a.price - b.price
+            // }
+
+            // debugger;
+
+            let x = queryData.getArtistScoreRecords.slice().sort((a: any, b: any) => {
+                return (a.score < b.score) ? 1: -1
+            })
+
+            x = x.slice(0, 10)
+
+
+            // setScoreRecords(x)
+
+            // let x = queryData.getArtistScoreRecords
+
+            // debugger;
+            setScoreRecords(x)
         }
-    })
+    }, [queryData])
 
     if(gameOver){
         return(
@@ -137,35 +173,38 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                             <h1>Thanks for playing!</h1>
                             <a href={'/'}>Go back to main page</a>
                         </div>
-                        <div>
-                            <h1>Submit your score!</h1>
+                        {
                             <div>
-                                <input
-                                    id="score-submit-text"
-                                    className={styles.FormInput}
-                                    type="text"
-                                    name="Score Submit"
-                                    placeholder="ENTER YOUR USERNAME HERE"
-                                    value={username}
-                                    onChange={e => { setUsername(e.target.value);}}
-                                    onKeyDown={e => { downHandler(e); }}
-                                    ></input>
+                                <h1>Submit your score!</h1>
+                                <div>
+                                    <input
+                                        id="score-submit-text"
+                                        className={styles.FormInput}
+                                        type="text"
+                                        name="Score Submit"
+                                        placeholder="ENTER YOUR USERNAME HERE"
+                                        value={username}
+                                        onChange={e => { setUsername(e.target.value);}}
+                                        onKeyDown={e => { downHandler(e); }}
+                                        >
+                                    </input>
+                                </div>
+                                <div    
+                                    id="song-guess-submit-container"
+                                    className="grid place-items-center"
+                                    >
+                                    { !username ?
+                                        <div id="EmptyUsernameButton" className="bg-red-500 text-white font-bold py-2 px-4 rounded w-3/4">
+                                            <FontAwesomeIcon icon={faMusic} />
+                                        </div>
+                                        :      
+                                        <div id="ScoreSubmitButton" className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4 cursor-pointer"} onClick={() => handleScoreSubmit()}>
+                                            <FontAwesomeIcon icon={faArrowUp} />
+                                        </div>
+                                    }
+                                </div>
                             </div>
-                            <div    
-                                id="song-guess-submit-container"
-                                className="grid place-items-center"
-                                >
-                                { !username ?
-                                    <div id="EmptyUsernameButton" className="bg-red-500 text-white font-bold py-2 px-4 rounded w-3/4">
-                                        <FontAwesomeIcon icon={faMusic} />
-                                    </div>
-                                    :      
-                                    <div id="ScoreSubmitButton" className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4 cursor-pointer"} onClick={() => handleScoreSubmit()}>
-                                        <FontAwesomeIcon icon={faArrowUp} />
-                                    </div>
-                                }
-                            </div>
-                        </div>
+                        }
                         <div>
                             {  
                                 scoreRecords.map((record: any) => {
@@ -173,10 +212,10 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                         <>
                                             <h1>{record.username} {record.score}</h1>
                                             {/* // <h2>{scoreRecords[0].username}</h2> */}
-                                            <h2> Test test test</h2>
+                                            {/* <h2> Test test test</h2> */}
                                         </>
                                     )    
-                            })
+                                })
                             }
                         </div>
                         {/* <div>
