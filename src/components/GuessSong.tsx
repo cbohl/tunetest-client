@@ -15,12 +15,6 @@ interface Props{
 const GuessSong = ({songTitle, nextSong, toastCorrectGuess, toastIncorrectGuess}: Props) => {    
     let [guess, setGuess] = useState("");  
 
-    // document.querySelector('#txtSearch').addEventListener('keypress', function (test) {
-        // if (test.key === 'Enter') {
-          // code for enter
-        // }
-    // });
-
     const handleGuess = () => {
         setGuess("");
         if(guess.toUpperCase() === songTitle.toUpperCase()){
