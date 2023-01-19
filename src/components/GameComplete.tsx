@@ -10,8 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faMusic } from "@fortawesome/free-solid-svg-icons";
 import { query } from "express";
 
-
-
 const GET_ARTIST_SCORE_RECORDS = gql`
     query GetArtistScoreRecords($artistId: Int) {
         getArtistScoreRecords(artistId: $artistId) {
@@ -31,16 +29,6 @@ const CREATE_SCORE_RECORD = gql`
     }
 `;
 
-// const ADD_TODO = gql`
-//   mutation AddTodo($type: String!) {
-//     addTodo(type: $type) {
-//       id
-//       type
-//     }
-//   }
-// `;
-
-
 interface props {
     artist: any;
     songsList: Song[];
@@ -55,26 +43,15 @@ interface Song {
 }
 
 const GameComplete = ({artist, songsList, gameOver}: props) => {
-    console.log("this is the artist id", artist.id)
     const { data: queryData, loading: queryLoading, error: queryError } = useQuery(GET_ARTIST_SCORE_RECORDS, {variables: {artistId: artist.id}});
     const [createScoreRecord, { data, loading, error }] = useMutation(CREATE_SCORE_RECORD);
     let [scoreRecords, setScoreRecords] = useState<any[]>([]);
     let [username, setUsername] = useState("");  
     let [scoreSubmitted, setScoreSubmitted] = useState(false)
     
-    // debugger
-
-
-    console.log("here is the query data", queryData)
-    if(scoreRecords.length > 0){
-        // debugger
-        console.log("here is the scoreRecords", scoreRecords[0].score)
-    }
     const totalGuessesCorrect = () => {
-        let numberCorrect = 0
-        console.log("guess correct songslist", songsList);
+        let numberCorrect = 0;
         (songsList as any).forEach((song: Song) => {
-            console.log("song object!!!", song)
             if(song.isCorrect){
                 numberCorrect ++
             }
@@ -83,28 +60,17 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
     }
     
     const submitScore = () => {
-        console.log("this is the artist id", artist.id)
         createScoreRecord({ variables: { artistId: artist.id, username: username, score: totalGuessesCorrect() } });
-        let y = scoreRecords
-        y.push({username: username, score: totalGuessesCorrect()})
-        y = y.slice().sort((a: any, b: any) => {
+        let updatedScoreRecords = scoreRecords
+        updatedScoreRecords.push({username: username, score: totalGuessesCorrect()})
+        updatedScoreRecords = updatedScoreRecords.slice().sort((a: any, b: any) => {
             return (a.score < b.score) ? 1: -1
         })
-        setScoreRecords(y)
+        setScoreRecords(updatedScoreRecords)
         setScoreSubmitted(true)
-
-        // debugger;
-
     }
 
     const handleScoreSubmit = () => {
-        // setUsername("");
-        // if(guess.toUpperCase() === songTitle.toUpperCase()){
-        //     toastCorrectGuess();
-        //     nextSong();
-        // }else{
-        //     toastIncorrectGuess();
-        // }
         submitScore()
     };
 
@@ -116,32 +82,12 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
 
     useEffect(() => {
         if(queryLoading === false && queryData){
-            // queryData.getArtistScoreRecords.sort((a: any, b: any) => {
-            //     if (a.score > b.score){
-            //         return 1
-            //     }
-            //     return -1
-            // }
-
-            // queryData.getArtistScoreRecords.sort((a: any, b: any) => {
-            //     return a.price - b.price
-            // }
-
-            // debugger;
-
-            let x = queryData.getArtistScoreRecords.slice().sort((a: any, b: any) => {
+            let orderedScoreRecords = queryData.getArtistScoreRecords.slice().sort((a: any, b: any) => {
                 return (a.score < b.score) ? 1: -1
             })
 
-            x = x.slice(0, 10)
-
-
-            // setScoreRecords(x)
-
-            // let x = queryData.getArtistScoreRecords
-
-            // debugger;
-            setScoreRecords(x)
+            orderedScoreRecords = orderedScoreRecords.slice(0, 10)
+            setScoreRecords(orderedScoreRecords)
         }
     }, [queryData])
 
