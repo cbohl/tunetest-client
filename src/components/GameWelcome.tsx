@@ -2,7 +2,6 @@
 
 import React from "react";
 import { isAsteriskToken } from "typescript";
-// import styles from "./GameWelcome.module.css";
 
 interface Props {
     artist: any;
