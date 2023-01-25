@@ -154,8 +154,6 @@ const GameComplete = ({artist, songsList, gameOver}: props) => {
                                     return(
                                         <>
                                             <h1>{record.username} {record.score}</h1>
-                                            {/* // <h2>{scoreRecords[0].username}</h2> */}
-                                            {/* <h2> Test test test</h2> */}
                                         </>
                                     )    
                                 })
