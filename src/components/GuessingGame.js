@@ -79,23 +79,30 @@ const GuessingGame = (props) => {
     useEffect(() => {
         if(loading === false && data){
             // debugger;
-            let blankSong = {}
+            // let blankSong = {}
             // let songs3 = data.allArtists[gameId - 1].songs
-            let updatedSongs = []
+            // let updatedSongs = []
 
             // let newSongs = data.getArtistInfo.songs
             // newSongs[0].isCorrectlyGuessed = false
             // debugger;
 
-            data.getArtistInfo.songs.map(({id, title, midiFilePath}, i) => {
-                blankSong.id = id
-                blankSong.title = title
-                blankSong.isCorrectlyGuessed = false
-                blankSong.isCurrent = false
-                blankSong.midiFilePath = midiFilePath
-                updatedSongs.push(blankSong)
-                blankSong = {}
-            })
+            // data.getArtistInfo.songs.map(({id, title, midiFilePath}, i) => {
+            //     blankSong.id = id
+            //     blankSong.title = title
+            //     blankSong.isCorrectlyGuessed = false
+            //     blankSong.isCurrent = false
+            //     blankSong.midiFilePath = midiFilePath
+            //     updatedSongs.push(blankSong)
+            //     blankSong = {}
+            // })
+
+
+            let updatedSongs = data.getArtistInfo.songs.map((item) => ({
+                ...item,
+                isCorrectlyGuessed: false,
+                isCurrent: false
+            }))
 
             setSongs(updatedSongs)
             setArtist(data.getArtistInfo)
