@@ -1,28 +1,3 @@
-/* .midiPlayer {
-    display: none
-} */
-
-/* .NextSong {
-    display: none;
-    visibility: hidden;
-} */
-
-h3 {
-    color: rgb(23, 128, 0);
-}
-
-.testclass {
-    color: yellow;
-}
-
-#super {
-    display: none;
-    visibility: hidden;
-}
-
-/* .DisplayMidiPlayer {
-    
-} */
 
 .HiddenMidiPlayer {
     display: none;
@@ -32,7 +7,3 @@ h3 {
 .Hidden {
     display: none
 }
-
-/* .midiPlayer {
-    display: none
-} */
