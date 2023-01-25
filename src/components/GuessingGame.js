@@ -12,28 +12,6 @@ import "html-midi-player";
 import { useParams } from 'react-router-dom'
 import { useQuery, gql } from "@apollo/client";
 
-// const GET_SONGS = gql`
-//     query GetSongs {
-//         songs {
-//             id
-//             title
-//             midiFileURL
-//         }
-//     }`;
-
-// const GET_ARTISTS = gql`
-//     query allArtists {
-//         allArtists {
-//             id
-//             firstName
-//             lastName
-//             songs {
-//                 title
-//                 midiFilePath
-//             }
-//         }
-//     }`;
-
 const GET_ARTIST_INFO = gql`
     query getArtistInfo($id: Int) {
         getArtistInfo(id: $id) {
@@ -47,16 +25,6 @@ const GET_ARTIST_INFO = gql`
     }
 `;
 
-
-//     const GET_ARTIST_SCORE_RECORDS = gql`
-//     query GetArtistScoreRecords($artistId: Int) {
-//         getArtistScoreRecords(artistId: $artistId) {
-//             username
-//             score
-//         }
-//     }
-// `
-
 const GuessingGame = (props) => {
     let [songIndex, setSongIndex] = useState(0);
     let [gameStart, setGameStart] = useState(false);
@@ -65,39 +33,10 @@ const GuessingGame = (props) => {
     let [artist, setArtist] = useState()
     let  { gameId }  = useParams();
     
-    // debugger;
-    
-    // const { data, loading, error } = useQuery(GET_ARTISTS);
-    // const { data, loading, error } = useQuery(GET_ARTIST_INFO, {variables: {id: useParams()}});
-    
-    // const { data: queryData, loading: queryLoading, error: queryError } = useQuery(GET_ARTIST_SCORE_RECORDS, {variables: {artistId: artist.id}});
-    console.log("this is the gameId", gameId)
-    // console.log("this is hte params", useParams())
-    // debugger;
     const { data, loading, error } = useQuery(GET_ARTIST_INFO, {variables: {id: parseInt(gameId)}});
     
     useEffect(() => {
         if(loading === false && data){
-            // debugger;
-            // let blankSong = {}
-            // let songs3 = data.allArtists[gameId - 1].songs
-            // let updatedSongs = []
-
-            // let newSongs = data.getArtistInfo.songs
-            // newSongs[0].isCorrectlyGuessed = false
-            // debugger;
-
-            // data.getArtistInfo.songs.map(({id, title, midiFilePath}, i) => {
-            //     blankSong.id = id
-            //     blankSong.title = title
-            //     blankSong.isCorrectlyGuessed = false
-            //     blankSong.isCurrent = false
-            //     blankSong.midiFilePath = midiFilePath
-            //     updatedSongs.push(blankSong)
-            //     blankSong = {}
-            // })
-
-
             let updatedSongs = data.getArtistInfo.songs.map((item) => ({
                 ...item,
                 isCorrectlyGuessed: false,
@@ -133,13 +72,10 @@ const GuessingGame = (props) => {
             setSongIndex(songIndex + 1);
         }else
             setGameOver(true);
-        };
+    };
         
         return(
             <div>
-                <div>
-                </div>
-
                 <div>
                 { songs.length > 0 ? 
                     <div>
