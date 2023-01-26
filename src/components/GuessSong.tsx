@@ -1,23 +1,19 @@
-/* eslint-disable */
-
 import React, { useState } from 'react';
 import styles from './GuessSong.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faMusic } from '@fortawesome/free-solid-svg-icons';
-
-interface Props {
-  songTitle: string;
-  nextSong: any;
-  toastCorrectGuess: any;
-  toastIncorrectGuess: any;
-}
 
 const GuessSong = ({
   songTitle,
   nextSong,
   toastCorrectGuess,
   toastIncorrectGuess,
-}: Props) => {
+}: {
+  songTitle: string;
+  nextSong: any;
+  toastCorrectGuess: any;
+  toastIncorrectGuess: any;
+}) => {
   let [guess, setGuess] = useState('');
 
   const handleGuess = () => {

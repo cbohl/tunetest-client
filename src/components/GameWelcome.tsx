@@ -1,15 +1,14 @@
-/* eslint-disable */
-
 import React from 'react';
-import { isAsteriskToken } from 'typescript';
 
-interface Props {
+const GameWelcome = ({
+  artist,
+  gameStart,
+  setGameStart,
+}: {
   artist: any;
   gameStart: boolean;
   setGameStart: any;
-}
-
-const GameWelcome = ({ artist, gameStart, setGameStart }: Props) => {
+}) => {
   const clickPlay = () => {
     let button: HTMLElement | null;
     const midiPlayerElement: HTMLElement = document.querySelector(
