@@ -10,14 +10,16 @@ Client
 *Tailwind.css
 *TypeScript formatted with ESLint and Prettier
 *Create-React-App
-\*GraphQL
+*GraphQL
+*Hosted via Netlify
 
 API
 *Express.js
 *Postgres
 *Node.js
 *TypeScript formatted with ESLint and Prettier
-\*GraphQL
+*GraphQL
+*Hosted via Fly.io
 
 <!--
 This is the client side of the application and it uses CreateReactApp. The API, also hosted here on GitHub, uses Express.js with a Postgres database. GraphQL is used to communication between the frontend and the backend. TypeScript is used throughout the project over JavaScript to eliminated errors and ESlint and Prettier make the code readable and consisten throughout the project. -->
