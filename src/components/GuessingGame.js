@@ -13,6 +13,7 @@ import { useQuery, gql } from '@apollo/client';
 const GET_ARTIST_INFO = gql`
   query getArtistInfo($id: Int) {
     getArtistInfo(id: $id) {
+      id
       firstName
       lastName
       songs {
@@ -42,7 +43,6 @@ const GuessingGame = (props) => {
         isCorrectlyGuessed: false,
         isCurrent: false,
       }));
-
       setSongs(updatedSongs);
       setArtist(data.getArtistInfo);
     }
