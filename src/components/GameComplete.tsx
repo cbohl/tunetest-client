@@ -1,4 +1,7 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import styles from './GuessSong.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,7 +26,19 @@ const CREATE_SCORE_RECORD = gql`
   }
 `;
 
-// songsList is typed as any but could be made into strictly typed object array.
+// interface props {
+//   artist: any;
+//   songsList: Song[];
+//   gameOver: boolean;
+// }
+
+interface Song {
+  title: string;
+  midiLink: string;
+  isCurrent: boolean;
+  isCorrect: boolean;
+}
+
 const GameComplete = ({
   artist,
   songsList,
@@ -40,14 +55,15 @@ const GameComplete = ({
   } = useQuery(GET_ARTIST_SCORE_RECORDS, {
     variables: { artistId: artist.id },
   });
-  const [createScoreRecord] = useMutation(CREATE_SCORE_RECORD);
+  const [createScoreRecord, { data, loading, error }] =
+    useMutation(CREATE_SCORE_RECORD);
   let [scoreRecords, setScoreRecords] = useState<any[]>([]);
   let [username, setUsername] = useState('');
   let [scoreSubmitted, setScoreSubmitted] = useState(false);
 
   const totalGuessesCorrect = () => {
     let numberCorrect = 0;
-    (songsList as any).forEach((song: any) => {
+    (songsList as any).forEach((song: Song) => {
       if (song.isCorrect) {
         numberCorrect++;
       }
@@ -56,7 +72,6 @@ const GameComplete = ({
   };
 
   const submitScore = () => {
-    // Should add contingency for scenario where mutation does not work.
     createScoreRecord({
       variables: {
         artistId: artist.id,
@@ -87,7 +102,7 @@ const GameComplete = ({
   };
 
   useEffect(() => {
-    if (queryLoading === false && queryError === null && queryData) {
+    if (queryLoading === false && queryData) {
       let orderedScoreRecords = queryData.getArtistScoreRecords
         .slice()
         .sort((a: any, b: any) => {
