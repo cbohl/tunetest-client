@@ -10,9 +10,9 @@ const GuessSong = ({
   toastIncorrectGuess,
 }: {
   songTitle: string;
-  nextSong: any;
-  toastCorrectGuess: any;
-  toastIncorrectGuess: any;
+  nextSong: Function;
+  toastCorrectGuess: Function;
+  toastIncorrectGuess: Function;
 }) => {
   let [guess, setGuess] = useState('');
 
@@ -26,7 +26,7 @@ const GuessSong = ({
     }
   };
 
-  const downHandler = (e: any) => {
+  const downHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
       handleGuess();
     }

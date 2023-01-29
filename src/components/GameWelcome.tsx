@@ -1,13 +1,20 @@
+/*eslint-disable no-undef*/
+
 import React from 'react';
+
+interface Artist {
+  firstName: string;
+  lastName: string;
+}
 
 const GameWelcome = ({
   artist,
   gameStart,
   setGameStart,
 }: {
-  artist: any;
+  artist: Artist;
   gameStart: boolean;
-  setGameStart: any;
+  setGameStart: Function;
 }) => {
   const clickPlay = () => {
     let button: HTMLElement | null;

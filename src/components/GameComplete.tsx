@@ -1,3 +1,5 @@
+/*eslint-disable no-undef*/
+
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import styles from './GuessSong.module.css';
@@ -23,13 +25,33 @@ const CREATE_SCORE_RECORD = gql`
   }
 `;
 
+interface Song {
+  title: string;
+  midiLink: string;
+  isCurrent: boolean;
+  isCorrect: boolean;
+}
+
+interface Artist {
+  id: number;
+  firstName: string;
+  lastName: string;
+  songs: Song[];
+}
+
+interface ScoreRecord {
+  artistId: number;
+  username: string;
+  score: number;
+}
+
 const GameComplete = ({
   artist,
   songsList,
   gameOver,
 }: {
-  artist: any;
-  songsList: any;
+  artist: Artist;
+  songsList: Song[];
   gameOver: boolean;
 }) => {
   const {
@@ -40,13 +62,13 @@ const GameComplete = ({
     variables: { artistId: artist.id },
   });
   const [createScoreRecord] = useMutation(CREATE_SCORE_RECORD);
-  let [scoreRecords, setScoreRecords] = useState<any[]>([]);
+  let [scoreRecords, setScoreRecords] = useState<ScoreRecord[]>([]);
   let [username, setUsername] = useState('');
   let [scoreSubmitted, setScoreSubmitted] = useState(false);
 
   const totalGuessesCorrect = () => {
     let numberCorrect = 0;
-    (songsList as any).forEach((song: any) => {
+    (songsList as Song[]).forEach((song: Song) => {
       if (song.isCorrect) {
         numberCorrect++;
       }
@@ -66,10 +88,13 @@ const GameComplete = ({
     updatedScoreRecords.push({
       username: username,
       score: totalGuessesCorrect(),
+      artistId: artist.id,
     });
-    updatedScoreRecords = updatedScoreRecords.slice().sort((a: any, b: any) => {
-      return a.score < b.score ? 1 : -1;
-    });
+    updatedScoreRecords = updatedScoreRecords
+      .slice()
+      .sort((a: ScoreRecord, b: ScoreRecord) => {
+        return a.score < b.score ? 1 : -1;
+      });
     setScoreRecords(updatedScoreRecords);
     setScoreSubmitted(true);
   };
@@ -78,7 +103,7 @@ const GameComplete = ({
     submitScore();
   };
 
-  const downHandler = (e: any) => {
+  const downHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
       handleScoreSubmit();
     }
@@ -88,7 +113,7 @@ const GameComplete = ({
     if (queryLoading === false && queryData && !queryError) {
       let orderedScoreRecords = queryData.getArtistScoreRecords
         .slice()
-        .sort((a: any, b: any) => {
+        .sort((a: ScoreRecord, b: ScoreRecord) => {
           return a.score < b.score ? 1 : -1;
         });
 
@@ -174,7 +199,7 @@ const GameComplete = ({
               </div>
             )}
             <div>
-              {scoreRecords.map((record: any) => {
+              {scoreRecords.map((record: ScoreRecord) => {
                 return (
                   <>
                     <h1>
