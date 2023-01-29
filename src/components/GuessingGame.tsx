@@ -1,14 +1,24 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import toast, { Toaster } from 'react-hot-toast';
-import GameWelcome from './GameWelcome.tsx';
+import GameWelcome from './GameWelcome';
 import GuessSong from './GuessSong';
-import GameComplete from './GameComplete.tsx';
+import GameComplete from './GameComplete';
 import styles from './GuessingGame.module.css';
 import 'html-midi-player';
 import { useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
+
+// declare global {
+//   namespace JSX {
+//     interface IntrinsicElements {
+//       midi-player: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+//     }
+//   }
+// }
 
 const GET_ARTIST_INFO = gql`
   query getArtistInfo($id: Int) {
@@ -24,21 +34,21 @@ const GET_ARTIST_INFO = gql`
   }
 `;
 
-const GuessingGame = (props) => {
+const GuessingGame = (props: any) => {
   let [songIndex, setSongIndex] = useState(0);
   let [gameStart, setGameStart] = useState(false);
   let [gameOver, setGameOver] = useState(false);
-  let [songs, setSongs] = useState([]);
+  let [songs, setSongs] = useState([] as any[]);
   let [artist, setArtist] = useState();
   let { gameId } = useParams();
 
   const { data, loading, error } = useQuery(GET_ARTIST_INFO, {
-    variables: { id: parseInt(gameId) },
+    variables: { id: parseInt(gameId!) },
   });
 
   useEffect(() => {
     if (loading === false && data) {
-      let updatedSongs = data.getArtistInfo.songs.map((item) => ({
+      let updatedSongs = data.getArtistInfo.songs.map((item: any) => ({
         ...item,
         isCorrectlyGuessed: false,
         isCurrent: false,
@@ -52,10 +62,20 @@ const GuessingGame = (props) => {
   const toastIncorrectGuess = () => toast('Incorrect guess!');
 
   const clickPlay = () => {
-    document
-      .querySelector('.NextMidiPlayer > Midi-player')
-      .shadowRoot.querySelector('div > button')
-      .click();
+    const realDoc = document;
+
+    if (realDoc) {
+      const midiPlayer = realDoc.querySelector('.NextMidiPlayer > Midi-player');
+      if (midiPlayer) {
+        const shadowButton = midiPlayer.shadowRoot;
+        if (shadowButton) {
+          const playButton: any = shadowButton.querySelector('div > button');
+          if (playButton !== null) {
+            playButton.click();
+          }
+        }
+      }
+    }
   };
 
   const nextSong = () => {
@@ -82,7 +102,7 @@ const GuessingGame = (props) => {
         {songs.length > 0 ? (
           <div>
             <GameWelcome
-              artist={artist}
+              artist={artist!}
               setGameStart={setGameStart}
               gameStart={gameStart}></GameWelcome>
 
@@ -106,13 +126,13 @@ const GuessingGame = (props) => {
                           })}
                           key={i}>
                           {/* <audio> */}
-                          <midi-player
+                          {/* <midi-player
                             src={
                               process.env.REACT_APP_API_URL +
                               '/static/' +
                               s.midiFilePath
                             }
-                            loop></midi-player>
+                            loop></midi-player> */}
                           {/* </audio> */}
                         </div>
                       );
@@ -138,7 +158,7 @@ const GuessingGame = (props) => {
             </div>
 
             <GameComplete
-              artist={artist}
+              artist={artist!}
               songsList={songs}
               gameOver={gameOver}></GameComplete>
           </div>
