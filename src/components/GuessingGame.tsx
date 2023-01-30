@@ -7,18 +7,35 @@ import toast, { Toaster } from 'react-hot-toast';
 import GameWelcome from './GameWelcome';
 import GuessSong from './GuessSong';
 import GameComplete from './GameComplete';
+// import * as MidiPlayer from './SuperMidiPlayer.js';
 import styles from './GuessingGame.module.css';
 import 'html-midi-player';
 import { useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 
-// declare global {
-//   namespace JSX {
-//     interface IntrinsicElements {
-//       midi-player: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-//     }
-//   }
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'midi-player': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      >;
+    }
+  }
+}
+
+declare module 'react' {
+  export interface HTMLAttributes<T> {
+    src?: any;
+    loop?: any;
+  }
+}
+// interface extends HTMLAttributes<T> {
+//   // extends React's HTMLAttributes
+//   src?: string;
 // }
+
+// const SpecialPlayer =
 
 const GET_ARTIST_INFO = gql`
   query getArtistInfo($id: Int) {
@@ -116,6 +133,12 @@ const GuessingGame = (props: any) => {
                 <div className="grid max-h-72 min-h-screen min-w-[100%] grid-rows-4 text-center gap-4">
                   <div className="mt-10">
                     {songs.map((s, i) => {
+                      const allowedProps = {
+                        src:
+                          process.env.REACT_APP_API_URL +
+                          '/static/' +
+                          s.midiFilePath,
+                      };
                       return (
                         <div
                           className={classNames.bind(styles)({
@@ -126,14 +149,17 @@ const GuessingGame = (props: any) => {
                           })}
                           key={i}>
                           {/* <audio> */}
-                          {/* <midi-player
+                          <midi-player
+                            // {...allowedProps}
                             src={
                               process.env.REACT_APP_API_URL +
                               '/static/' +
                               s.midiFilePath
                             }
-                            loop></midi-player> */}
+                            loop></midi-player>
                           {/* </audio> */}
+                          {/* <MidiPlayer */}
+                          {/* midiFilePath={s.midiFilePath}></MidiPlayer> */}
                         </div>
                       );
                     })}
