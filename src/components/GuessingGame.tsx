@@ -1,4 +1,5 @@
-/* eslint-disable */
+// /* eslint-disable */
+/*eslint-disable no-undef*/
 
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -26,16 +27,47 @@ declare global {
 
 declare module 'react' {
   export interface HTMLAttributes<T> {
-    src?: any;
-    loop?: any;
+    src?: string;
+    loop?: boolean;
   }
 }
+
+// declare namespace React {
+//   export interface HTMLAttributes<T> {
+//     src?: any;
+//     loop?: any;
+//   }
+// }
+
+// declare namespace React {
+//   interface IntrinsicElements {
+//     'midi-player': React.DetailedHTMLProps<
+//       React.HTMLAttributes<HTMLElement>,
+//       HTMLElement
+//     >;
+//   }
+// }
+
 // interface extends HTMLAttributes<T> {
 //   // extends React's HTMLAttributes
 //   src?: string;
 // }
 
 // const SpecialPlayer =
+
+interface Song {
+  title: string;
+  midiFilePath: string;
+  isCurrent: boolean;
+  isCorrect: boolean;
+}
+
+interface Artist {
+  id: number;
+  firstName: string;
+  lastName: string;
+  songs: Song[];
+}
 
 const GET_ARTIST_INFO = gql`
   query getArtistInfo($id: Int) {
@@ -51,22 +83,22 @@ const GET_ARTIST_INFO = gql`
   }
 `;
 
-const GuessingGame = (props: any) => {
+const GuessingGame = () => {
   let [songIndex, setSongIndex] = useState(0);
   let [gameStart, setGameStart] = useState(false);
   let [gameOver, setGameOver] = useState(false);
-  let [songs, setSongs] = useState([] as any[]);
+  let [songs, setSongs] = useState([] as Song[]);
   let [artist, setArtist] = useState();
   let { gameId } = useParams();
 
-  const { data, loading, error } = useQuery(GET_ARTIST_INFO, {
+  const { data, loading } = useQuery(GET_ARTIST_INFO, {
     variables: { id: parseInt(gameId!) },
   });
 
   useEffect(() => {
     if (loading === false && data) {
-      let updatedSongs = data.getArtistInfo.songs.map((item: any) => ({
-        ...item,
+      let updatedSongs = data.getArtistInfo.songs.map((song: Song) => ({
+        ...song,
         isCorrectlyGuessed: false,
         isCurrent: false,
       }));
@@ -133,12 +165,6 @@ const GuessingGame = (props: any) => {
                 <div className="grid max-h-72 min-h-screen min-w-[100%] grid-rows-4 text-center gap-4">
                   <div className="mt-10">
                     {songs.map((s, i) => {
-                      const allowedProps = {
-                        src:
-                          process.env.REACT_APP_API_URL +
-                          '/static/' +
-                          s.midiFilePath,
-                      };
                       return (
                         <div
                           className={classNames.bind(styles)({

@@ -27,7 +27,7 @@ const CREATE_SCORE_RECORD = gql`
 
 interface Song {
   title: string;
-  midiLink: string;
+  midiFilePath: string;
   isCurrent: boolean;
   isCorrect: boolean;
 }
