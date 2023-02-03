@@ -1,4 +1,3 @@
-// /* eslint-disable */
 /*eslint-disable no-undef*/
 
 import React, { useState, useEffect } from 'react';
@@ -8,7 +7,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import GameWelcome from './GameWelcome';
 import GuessSong from './GuessSong';
 import GameComplete from './GameComplete';
-// import * as MidiPlayer from './SuperMidiPlayer.js';
 import styles from './GuessingGame.module.css';
 import 'html-midi-player';
 import { useParams } from 'react-router-dom';
@@ -31,29 +29,6 @@ declare module 'react' {
     loop?: boolean;
   }
 }
-
-// declare namespace React {
-//   export interface HTMLAttributes<T> {
-//     src?: any;
-//     loop?: any;
-//   }
-// }
-
-// declare namespace React {
-//   interface IntrinsicElements {
-//     'midi-player': React.DetailedHTMLProps<
-//       React.HTMLAttributes<HTMLElement>,
-//       HTMLElement
-//     >;
-//   }
-// }
-
-// interface extends HTMLAttributes<T> {
-//   // extends React's HTMLAttributes
-//   src?: string;
-// }
-
-// const SpecialPlayer =
 
 interface Song {
   title: string;
@@ -174,18 +149,13 @@ const GuessingGame = () => {
                             HiddenMidiPlayer: songIndex != i,
                           })}
                           key={i}>
-                          {/* <audio> */}
                           <midi-player
-                            // {...allowedProps}
                             src={
                               process.env.REACT_APP_API_URL +
                               '/static/' +
                               s.midiFilePath
                             }
                             loop></midi-player>
-                          {/* </audio> */}
-                          {/* <MidiPlayer */}
-                          {/* midiFilePath={s.midiFilePath}></MidiPlayer> */}
                         </div>
                       );
                     })}
