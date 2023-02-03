@@ -21,7 +21,7 @@ export default function Root() {
   return (
     <div className="flex min-h-screen justify-center">
       <div className="grid max-w-3xl min-w-[60%] max-h-screen grid-rows-4 text-center">
-        <h1 className="rows-span-1">Welcome to the Music Guessing App!</h1>
+        <h1 className="rows-span-1">Welcome to TuneTest!</h1>
         <nav>
           <ul className="grid grid-rows-3 max-h-screen mx-auto">
             {data.allArtists.map((artist, i) => {
