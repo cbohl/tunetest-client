@@ -1,38 +1,8 @@
-/* .midiPlayer {
-    display: none
-} */
-
-/* .NextSong {
-    display: none;
-    visibility: hidden;
-} */
-
-h3 {
-    color: rgb(23, 128, 0);
-}
-
-.testclass {
-    color: yellow;
-}
-
-#super {
-    display: none;
-    visibility: hidden;
-}
-
-/* .DisplayMidiPlayer {
-    
-} */
-
 .HiddenMidiPlayer {
-    display: none;
-    visibility: hidden;
+  display: none;
+  visibility: hidden;
 }
 
 .Hidden {
-    display: none
+  display: none;
 }
-
-/* .midiPlayer {
-    display: none
-} */

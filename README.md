@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+TuneTest
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Summary
+TuneTest is a web app for guessing the names of popular songs based on a MIDI rendition. Players can choose an artist and then they will be given three songs sequentially and can guess the name of each song. After the game is complete, users have the option to enter a username to save with their score, in the style of an old arcade game.
 
-## Available Scripts
+#Technologies Used
 
-In the project directory, you can run:
+Client
+*React
+*Tailwind.css
+*TypeScript formatted with ESLint and Prettier
+*Create-React-App
+*GraphQL
+*Hosted via Netlify
 
-### `npm start`
+API
+*Docker
+*Express.js
+*Postgres
+*Node.js
+*TypeScript formatted with ESLint and Prettier
+*GraphQL
+\*Hosted via Fly.io
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#Challenges and Techniques
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    *This project uses the HTML-Midi-Player Node Module to play songs. The songs need to start automatically after a correct guess is made or the skip button is pressed.Therefore, programmatic clicks are used to trigger the songs.
 
-### `npm test`
+    *Google Chrome's AudioContext feature requires audio events to occur as a direct result of user action. As a result, the use of reloading components through React DOM manipulation would prevent the automatic playing in Chrome. To work around this, the app preloads all songs required throughout the game but hides from view those that are not in the current round.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    *HTML-Midi-Player includes a component with a custom tag. As a result, TypesScript could not identify the component type and it was necessary to identify it as a custom HTML Element and add custom HTML attributes.
 
-### `npm run build`
+    *In order to make it easy to add new artists, the artist information, photos, song titles, and MIDI tracks are all hosted on the API. The client can then dynamically render as many artists that are on the database.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#Feature Wishlist
+*A more sophisticated scoring system
+*More artists and songs \*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!--
+This is the client side of the application and it uses CreateReactApp. The API, also hosted here on GitHub, uses Express.js with a Postgres database. GraphQL is used to communication between the frontend and the backend. TypeScript is used throughout the project over JavaScript to eliminated errors and ESlint and Prettier make the code readable and consisten throughout the project. -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!--
+    Using a React Hook to programatically click play after the DOM Manipulation of a React Hook would be prevented by Google Chrome's AudioContext requirement of user action.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    The guessing game component always pre-loads the next song but hides it from view.
+    This allows a successful user guess to programatically trigger the playing of the next song. -->
