@@ -1,7 +1,15 @@
+/*eslint-disable no-undef*/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import NavBar from '../components/NavBar';
+
+interface Artist {
+  id: number;
+  firstName: string;
+  lastName: string;
+}
 
 const GET_ARTISTS = gql`
   query allArtists {
@@ -27,7 +35,7 @@ export default function Root() {
           <h1 className="rows-span-1">Welcome to TuneTest!</h1>
           <nav>
             <ul className="grid grid-rows-3 max-h-screen mx-auto">
-              {data.allArtists.map((artist, i) => {
+              {data.allArtists.map((artist: Artist, i: number) => {
                 return (
                   <li className="rows-span-1" key={i}>
                     <div className="mx-auto block lg:h-5/6 lg:w-1/3 sm:h-5/6 sm:w-1/4 h-2/3 w-1/2 rounded-md overflow-hidden group">
