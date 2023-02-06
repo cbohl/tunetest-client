@@ -1,5 +1,3 @@
-/*eslint-disable no-undef*/
-
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import styles from './GuessSong.module.css';
