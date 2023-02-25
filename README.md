@@ -36,6 +36,7 @@ TuneTest is a web app for guessing the names of popular songs based on a MIDI re
 
 - A more sophisticated scoring system
 - More artists and songs
+- Keyboard accessibility when selecting a game on the index page
 
 <!--
 This is the client side of the application and it uses CreateReactApp. The API, also hosted here on GitHub, uses Express.js with a Postgres database. GraphQL is used to communication between the frontend and the backend. TypeScript is used throughout the project over JavaScript to eliminated errors and ESlint and Prettier make the code readable and consisten throughout the project. -->

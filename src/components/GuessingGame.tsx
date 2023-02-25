@@ -1,9 +1,8 @@
-/*eslint-disable no-undef*/
-
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import toast, { Toaster } from 'react-hot-toast';
+import NavBar from './NavBar';
 import GameWelcome from './GameWelcome';
 import GuessSong from './GuessSong';
 import GameComplete from './GameComplete';
@@ -122,6 +121,7 @@ const GuessingGame = () => {
 
   return (
     <div>
+      <NavBar></NavBar>
       <div>
         {songs.length > 0 ? (
           <div>
