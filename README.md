@@ -4,6 +4,8 @@
 
 TuneTest is a web app for guessing the names of popular songs based on a MIDI rendition. Players can choose an artist and then they will be given three songs sequentially and can guess the name of each song. After the game is complete, users have the option to enter a username to save with their score, in the style of an old arcade game.
 
+(This repo is the client side only. To see the source code for the API, please see https://github.com/cbohl/tunetest-api.)
+
 ## Technologies Used
 
 ### Client
@@ -37,12 +39,3 @@ TuneTest is a web app for guessing the names of popular songs based on a MIDI re
 - A more sophisticated scoring system
 - More artists and songs
 - Keyboard accessibility when selecting a game on the index page
-
-<!--
-This is the client side of the application and it uses CreateReactApp. The API, also hosted here on GitHub, uses Express.js with a Postgres database. GraphQL is used to communication between the frontend and the backend. TypeScript is used throughout the project over JavaScript to eliminated errors and ESlint and Prettier make the code readable and consisten throughout the project. -->
-
-<!--
-    Using a React Hook to programatically click play after the DOM Manipulation of a React Hook would be prevented by Google Chrome's AudioContext requirement of user action.
-
-    The guessing game component always pre-loads the next song but hides it from view.
-    This allows a successful user guess to programatically trigger the playing of the next song. -->
