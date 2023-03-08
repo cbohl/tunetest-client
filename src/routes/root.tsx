@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
@@ -29,12 +31,14 @@ export default function Root() {
     return <h1>GraphQL query error!</h1>;
   }
   return (
-    <div className="bg-slate-400">
+    <div className="bg-yellow-400">
       <NavBar></NavBar>
       <div className="flex min-h-screen justify-center">
         <div className="grid max-w-3xl min-w-[60%] max-h-screen grid-rows-4 text-center">
           <h1 className="rows-span-1">Welcome to TuneTest!</h1>
-          <SineWave></SineWave>
+          <div id="sine-wave-window" className="">
+            <SineWave></SineWave>
+          </div>
           {/* <Canvas></Canvas> */}
           {/* <Wave></Wave> */}
           <nav>

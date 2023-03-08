@@ -60,11 +60,11 @@ const SineWave = () => {
       el: document.getElementById('waves'),
       speed: 8,
       width: function () {
-        return $(window).width();
+        return $('#sine-wave-window').width();
       },
-      height: function () {
-        return $(window).height();
-      },
+      // height: function () {
+      //   return $(window).height();
+      // },
       ease: 'SineInOut',
       wavesWidth: '70%',
       waves: [
@@ -73,6 +73,7 @@ const SineWave = () => {
           lineWidth: 3,
           amplitude: -75,
           wavelength: 25,
+          strokeStyle: 'rgba(0,255,0,0.3)', // Stroke color and opacity
         },
       ],
       // Called on window resize
@@ -98,8 +99,8 @@ const SineWave = () => {
   // debugger;
   return (
     <>
-      <h1>This is where it should be</h1>
-      <canvas id="waves" className="waves"></canvas>
+      {/* <h1>This is where it should be</h1> */}
+      <canvas id="waves"></canvas>
       {/* {waves} */}
     </>
   );
