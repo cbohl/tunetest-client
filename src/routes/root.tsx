@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import NavBar from '../components/NavBar';
+import SineWave from '../components/SineWave';
+// import Canvas from '../components/Canvas';
 
+// import Wave from '../components/Wave';
 interface Artist {
   id: number;
   firstName: string;
@@ -26,11 +29,14 @@ export default function Root() {
     return <h1>GraphQL query error!</h1>;
   }
   return (
-    <div>
+    <div className="bg-slate-400">
       <NavBar></NavBar>
       <div className="flex min-h-screen justify-center">
         <div className="grid max-w-3xl min-w-[60%] max-h-screen grid-rows-4 text-center">
           <h1 className="rows-span-1">Welcome to TuneTest!</h1>
+          <SineWave></SineWave>
+          {/* <Canvas></Canvas> */}
+          {/* <Wave></Wave> */}
           <nav>
             <ul className="grid grid-rows-3 max-h-screen mx-auto">
               {data.allArtists.map((artist: Artist, i: number) => {
