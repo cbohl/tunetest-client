@@ -4,7 +4,7 @@
 
 TuneTest is a web app for guessing the names of popular songs based on a MIDI rendition. Players can choose an artist and then they will be given three songs sequentially and can guess the name of each song. After the game is complete, users have the option to enter a username to save with their score, in the style of an old arcade game.
 
-(This repo is the client side only. To see the source code for the API, please see https://github.com/cbohl/tunetest-api.)
+(This repo is the client side only. To see the source code for the API, please go to https://github.com/cbohl/tunetest-api.)
 
 ## Technologies Used
 
