@@ -33,14 +33,18 @@ export default function Root() {
   return (
     <div className="h-auto bg-yellow-400">
       <NavBar></NavBar>
+      <div id="sine-wave-window" className="row-span-2">
+        <SineWave></SineWave>
+      </div>
+      {/* <h2>Test</h2>
+      <div id="sine-wave-window-2" className="row-span-2">
+        <SineWave></SineWave>
+      </div> */}
       <div className="flex min-h-screen justify-center">
         <div className="grid grid-rows-6 max-w-3xl min-w-[60%] max-h-screen">
           <div className="row-span-2 grid grid-rows-3 w-full place-items-center text-center">
             <div className="row-span-1">
               <h1>Welcome to TuneTest!</h1>
-            </div>
-            <div id="sine-wave-window" className="row-span-2 h-24">
-              <SineWave></SineWave>
             </div>
           </div>
           {/* <nav> */}
@@ -93,6 +97,9 @@ export default function Root() {
           </nav>
           {/* </nav> */}
         </div>
+      </div>
+      <div id="sine-wave-window" className="row-span-2">
+        <SineWave></SineWave>
       </div>
     </div>
   );

@@ -56,6 +56,7 @@ const SineWave = () => {
 
   // render(){}
   useEffect(() => {
+    // debugger;
     let waves = new SineWaves({
       el: document.getElementById('waves'),
       speed: 8,
@@ -66,13 +67,13 @@ const SineWave = () => {
       //   return $('#sine-wave-window').height();
       // },
       ease: 'SineInOut',
-      wavesWidth: '90%',
+      wavesWidth: '200%',
       waves: [
         {
           timeModifier: 4,
           lineWidth: 3,
           amplitude: -45,
-          wavelength: 25,
+          wavelength: 50,
           strokeStyle: 'rgba(0,255,0,.8)', // Stroke color and opacity
         },
       ],
@@ -84,6 +85,38 @@ const SineWave = () => {
         gradient.addColorStop(1, 'rgba(23, 210, 168, 0.2)');
       },
     });
+    // waves.running = false;
+    // waves.update();
+    // });
+
+    // let waves2 = new SineWaves({
+    //   el: document.getElementById('waves'),
+    //   speed: 8,
+    //   width: function () {
+    //     return $('#sine-wave-window-2').width();
+    //   },
+    //   // height: function () {
+    //   //   return $('#sine-wave-window').height();
+    //   // },
+    //   ease: 'SineInOut',
+    //   wavesWidth: '200%',
+    //   waves: [
+    //     {
+    //       timeModifier: 4,
+    //       lineWidth: 3,
+    //       amplitude: -45,
+    //       wavelength: 50,
+    //       strokeStyle: 'rgba(0,255,0,.8)', // Stroke color and opacity
+    //     },
+    //   ],
+    //   // Called on window resize
+    //   resizeEvent: function () {
+    //     var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
+    //     gradient.addColorStop(0, 'rgba(23, 210, 168, 0.2)');
+    //     gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
+    //     gradient.addColorStop(1, 'rgba(23, 210, 168, 0.2)');
+    //   },
+    // });
     // waves.running = false;
     // waves.update();
   });
@@ -100,7 +133,7 @@ const SineWave = () => {
   return (
     <>
       {/* <h1>This is where it should be</h1> */}
-      <canvas id="waves"></canvas>
+      <canvas id="waves" className=""></canvas>
       {/* {waves} */}
     </>
   );
