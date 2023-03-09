@@ -40,10 +40,10 @@ export default function Root() {
       <div id="sine-wave-window-2" className="row-span-2">
         <SineWave></SineWave>
       </div> */}
-      <div className="flex min-h-screen justify-center">
-        <div className="grid grid-rows-6 max-w-3xl min-w-[60%] max-h-screen">
-          <div className="row-span-2 grid grid-rows-3 w-full place-items-center text-center">
-            <div className="row-span-1">
+      <div className="flex justify-center">
+        <div className="grid grid-rows-6 w-full max-h-screen">
+          <div className="row-span-1  w-full place-items-center text-center">
+            <div>
               <h1>Welcome to TuneTest!</h1>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function Root() {
 
           </div> */}
 
-          <nav className="row-span-4 grid grid-rows-3 h-full">
+          <nav className="row-span-5 grid grid-rows-3 h-full">
             {data.allArtists.map((artist: Artist, i: number) => {
               return (
                 <div className="row-span-1" key={i}>
@@ -87,9 +87,6 @@ export default function Root() {
                         '2.webp'
                       }
                       className="object-contain scale-100 hover:scale-125 ease-in duration-500"></img>
-                    <div className="w-full h-full bg-black object-contain scale-100 hover:scale-125 ease-in duration-500">
-                      <h1>Test</h1>
-                    </div>
                   </div>
                 </div>
               );

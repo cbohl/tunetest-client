@@ -72,8 +72,8 @@ const SineWave = () => {
         {
           timeModifier: 4,
           lineWidth: 3,
-          amplitude: -45,
-          wavelength: 50,
+          amplitude: -35,
+          wavelength: 30,
           strokeStyle: 'rgba(0,255,0,.8)', // Stroke color and opacity
         },
       ],
