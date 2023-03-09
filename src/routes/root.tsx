@@ -67,15 +67,15 @@ export default function Root() {
 
           </div> */}
 
-          <nav className="row-span-5 grid grid-rows-3 h-full">
+          <nav className="row-span-5 grid grid-rows-3 h-full w-full">
             {data.allArtists.map((artist: Artist, i: number) => {
               return (
                 <div className="row-span-1" key={i}>
-                  <div className="bg-black mx-auto lg:h-5/6 lg:w-1/3 sm:h-5/6 sm:w-1/4 h-2/3 w-1/2 rounded-md overflow-hidden group">
-                    <div className="absolute my-auto justify-center items-center left-1/2 transform -translate-x-1/2 z-30 hidden group-hover:block">
+                  <div className="mx-auto block xl:w-1/5 lg:h-5/6 lg:w-1/4 sm:h-5/6 sm:w-1/4 h-2/3 w-1/2 rounded-md overflow-hidden group">
+                    <div className="absolute my-auto justify-center items-center left-1/2 transform -translate-x-1/2 z-30 hidden group-hover:blockabsolute my-auto justify-center items-center left-1/2 transform -translate-x-1/2 z-30 hidden group-hover:block">
                       <Link
                         to={'games/' + (i + 1)}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        className="flex flex-col items-center text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Play The {artist.lastName} Game
                       </Link>
                     </div>
