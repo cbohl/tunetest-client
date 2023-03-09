@@ -63,17 +63,17 @@ const SineWave = () => {
         return $('#sine-wave-window').width();
       },
       // height: function () {
-      //   return $(window).height();
+      //   return $('#sine-wave-window').height();
       // },
       ease: 'SineInOut',
-      wavesWidth: '70%',
+      wavesWidth: '90%',
       waves: [
         {
           timeModifier: 4,
           lineWidth: 3,
-          amplitude: -75,
+          amplitude: -45,
           wavelength: 25,
-          strokeStyle: 'rgba(0,255,0,0.3)', // Stroke color and opacity
+          strokeStyle: 'rgba(0,255,0,.8)', // Stroke color and opacity
         },
       ],
       // Called on window resize
