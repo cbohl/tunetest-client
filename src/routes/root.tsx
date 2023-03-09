@@ -34,7 +34,7 @@ export default function Root() {
   return (
     <div className="h-auto bg-rose">
       <NavBar></NavBar>
-      <div id="sine-wave-window" className="row-span-2">
+      <div id="sine-wave-window" className="">
         <SineWave></SineWave>
       </div>
       {/* <h2>Test</h2>
@@ -56,39 +56,38 @@ export default function Root() {
               </div>
             </div>
 
-            {/* <video
-              id="background-video"
-              autoPlay
-              loop
-              muted
-              poster="https://assets.codepen.io/6093409/river.jpg">
-              <source
-                src="https://assets.codepen.io/6093409/river.mp4"
-                type="video/mp4"></source>
-            </video> */}
             {/* <h1>THIS IS A RIVER.</h1>
 <h2>How majestic.</h2> */}
             {/* <nav> */}
 
             {/*          
           <div className="row-span-3 grid grid-rows-3 w-4/5 bg-white h-full">
-            
-        
-              
-            <div className="row-span-1 w-3/5 bg-lime-500 h-full">
-              <h1>test 1</h1>
-            </div>
-            <div className="row-span-1 w-3/5 bg-lime-500 h-full">
-              <h1>test 2</h1>
-            </div>
-            <div className="row-span-1 w-3/5 bg-lime-500 h-full">
-              <h1>test 3</h1>
-            </div>
-
-
-          </div> */}
+          
+          
+          
+          <div className="row-span-1 w-3/5 bg-lime-500 h-full">
+          <h1>test 1</h1>
+          </div>
+          <div className="row-span-1 w-3/5 bg-lime-500 h-full">
+          <h1>test 2</h1>
+          </div>
+          <div className="row-span-1 w-3/5 bg-lime-500 h-full">
+          <h1>test 3</h1>
+          </div>
+          
+          
+        </div> */}
 
             <nav className="row-span-5 grid grid-rows-3 h-full w-full">
+              <video
+                id="background-video"
+                autoPlay
+                loop
+                muted
+                className="fixed mb-80 z-0 opacity-60 h-80 w-full object-cover"
+                poster="https://assets.codepen.io/6093409/river.jpg">
+                <source src="BeatlesRecording.mov" type="video/mp4"></source>
+              </video>
               {data.allArtists.map((artist: Artist, i: number) => {
                 return (
                   <div className="row-span-1" key={i}>
@@ -117,7 +116,8 @@ export default function Root() {
           </div>
         </div>
       </div>
-      <div id="sine-wave-window-2" className="row-span-2">
+      <div className="fixed block mt-80"></div>
+      <div id="sine-wave-window-2" className="">
         <SineWave2></SineWave2>
       </div>
     </div>
