@@ -42,7 +42,7 @@ export default function Root() {
         <SineWave></SineWave>
       </div> */}
       <div className=" grid place-items-center">
-        <div className="flex justify-center bg-rose-dark w-4/5">
+        <div className="flex justify-center bg-rose-dark">
           <div className="grid grid-rows-6 w-full max-h-screen">
             <div className="row-span-1 grid place-items-center">
               {/* <div>
@@ -55,6 +55,19 @@ export default function Root() {
                 </a>
               </div>
             </div>
+
+            {/* <video
+              id="background-video"
+              autoPlay
+              loop
+              muted
+              poster="https://assets.codepen.io/6093409/river.jpg">
+              <source
+                src="https://assets.codepen.io/6093409/river.mp4"
+                type="video/mp4"></source>
+            </video> */}
+            {/* <h1>THIS IS A RIVER.</h1>
+<h2>How majestic.</h2> */}
             {/* <nav> */}
 
             {/*          
@@ -79,7 +92,7 @@ export default function Root() {
               {data.allArtists.map((artist: Artist, i: number) => {
                 return (
                   <div className="row-span-1" key={i}>
-                    <div className="mx-auto block xl:w-1/4 lg:h-5/6 lg:w-1/3 md:w-1/3 sm:h-5/6 sm:w-1/3 h-2/3 w-1/2 rounded-md overflow-hidden group">
+                    <div className="mx-auto block xl:w-1/5 lg:h-5/6 lg:w-1/4 md:w-1/3 sm:h-5/6 sm:w-1/3 h-2/3 w-1/2 rounded-md overflow-hidden group">
                       <div className="absolute my-auto justify-center items-center left-1/2 transform -translate-x-1/2 z-30 hidden group-hover:blockabsolute my-auto justify-center items-center left-1/2 transform -translate-x-1/2 z-30 hidden group-hover:block">
                         <Link
                           to={'games/' + (i + 1)}
