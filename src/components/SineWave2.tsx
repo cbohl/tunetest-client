@@ -8,7 +8,7 @@ import SineWaves from 'sine-waves';
 // const SineWaves2 = require('sine-waves');
 // debugger;
 
-const SineWave = () => {
+const SineWave2 = () => {
   // debugger;
   // useEffect(() => {
   // var waves = new SineWaves({
@@ -58,7 +58,7 @@ const SineWave = () => {
   useEffect(() => {
     // debugger;
     let waves = new SineWaves({
-      el: document.getElementById('waves'),
+      el: document.getElementById('waves2'),
       speed: 8,
       width: function () {
         return $('#sine-wave-window').width();
@@ -133,10 +133,10 @@ const SineWave = () => {
   return (
     <>
       {/* <h1>This is where it should be</h1> */}
-      <canvas id="waves" className=""></canvas>
+      <canvas id="waves2" className=""></canvas>
       {/* {waves} */}
     </>
   );
 };
 
-export default SineWave;
+export default SineWave2;

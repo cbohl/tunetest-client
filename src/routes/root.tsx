@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import NavBar from '../components/NavBar';
 import SineWave from '../components/SineWave';
+import SineWave2 from '../components/SineWave2';
 // import Canvas from '../components/Canvas';
 
 // import Wave from '../components/Wave';
@@ -31,7 +32,7 @@ export default function Root() {
     return <h1>GraphQL query error!</h1>;
   }
   return (
-    <div className="h-auto bg-yellow-400">
+    <div className="h-auto bg-[#8A6464]">
       <NavBar></NavBar>
       <div id="sine-wave-window" className="row-span-2">
         <SineWave></SineWave>
@@ -40,11 +41,15 @@ export default function Root() {
       <div id="sine-wave-window-2" className="row-span-2">
         <SineWave></SineWave>
       </div> */}
-      <div className="flex justify-center">
+      <div className="flex justify-center bg-black w-4/5">
         <div className="grid grid-rows-6 w-full max-h-screen">
-          <div className="row-span-1  w-full place-items-center text-center">
-            <div>
+          <div className="row-span-1 grid place-items-center">
+            {/* <div>
               <h1>Welcome to TuneTest!</h1>
+            </div> */}
+            {/* <div className="w-1/4  "> */}
+            <div>
+              <img src={'/tunetestlogo.png'} className="w-60"></img>
             </div>
           </div>
           {/* <nav> */}
@@ -95,8 +100,8 @@ export default function Root() {
           {/* </nav> */}
         </div>
       </div>
-      <div id="sine-wave-window" className="row-span-2">
-        <SineWave></SineWave>
+      <div id="sine-wave-window-2" className="row-span-2">
+        <SineWave2></SineWave2>
       </div>
     </div>
   );
