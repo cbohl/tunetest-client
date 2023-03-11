@@ -138,7 +138,7 @@ const GameComplete = ({
               <div className="my-5">
                 <a
                   href={'/'}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  className="items-center text-center bg-cloud hover:bg-cloud-dark font-bold text-slate-50 py-2 px-4 rounded">
                   Go back to home page
                 </a>
               </div>

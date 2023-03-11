@@ -60,7 +60,7 @@ const GuessSong = ({
           <div
             id="SongGuessSubmitButton"
             className={
-              'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4 cursor-pointer'
+              'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-3/4 cursor-pointer'
             }
             onClick={() => handleGuess()}>
             <FontAwesomeIcon icon={faArrowUp} />
