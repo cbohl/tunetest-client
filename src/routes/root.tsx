@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import NavBar from '../components/NavBar';
 import SineWave from '../components/SineWave';
-// import SineWave2 from '../components/SineWave2';
 interface Artist {
   id: number;
   firstName: string;
@@ -30,6 +29,8 @@ export default function Root() {
     <div className="h-auto bg-rose">
       <NavBar></NavBar>
       <div id="sine-wave-window-1" className="">
+        {/* It is necessary to create this div for now to establish a width.
+        This is due to limitations of the SineWave module */}
         <SineWave instance={1}></SineWave>
       </div>
       <div className=" grid place-items-center">
@@ -49,9 +50,7 @@ export default function Root() {
                 autoPlay
                 loop
                 muted
-                className="fixed mb-80 z-0 opacity-60 h-80 w-full object-cover"
-                // poster="https://assets.codepen.io/6093409/river.jpg"
-              >
+                className="fixed mb-80 z-0 opacity-60 h-80 w-full object-cover">
                 <source src="BeatlesRecording.mov" type="video/mp4"></source>
               </video>
               {data.allArtists.map((artist: Artist, i: number) => {
