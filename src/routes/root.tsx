@@ -49,7 +49,7 @@ export default function Root() {
               <h1>Welcome to TuneTest!</h1>
             </div> */}
               {/* <div className="w-1/4  "> */}
-              <div>
+              <div className="h-auto w-full grid place-items-center bg-[#f7f7f7]">
                 <a href={'/'}>
                   <img src={'/tunetestlogo.png'} className="w-60"></img>
                 </a>
