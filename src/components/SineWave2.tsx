@@ -1,71 +1,21 @@
+// Although this fails the coding principle of DRY, this file is currently
+// necessary due to the constraints of the sine-waves Node module.
+
 /* eslint-disable */
 
 import React, { useEffect } from 'react';
 import $ from 'jquery';
-// import styles from './SineWave.module.css';
 import SineWaves from 'sine-waves';
 
-// const SineWaves2 = require('sine-waves');
-// debugger;
-
 const SineWave2 = () => {
-  // debugger;
-  // useEffect(() => {
-  // var waves = new SineWaves({
-  //   el: document.getElementById('waves'),
-  //   speed: 8,
-  //   width: function () {
-  //     return $(window).width();
-  //   },
-  //   height: function () {
-  //     return $(window).height();
-  //   },
-  //   ease: 'SineInOut',
-  //   wavesWidth: '70%',
-  //   waves: [
-  //     {
-  //       timeModifier: 4,
-  //       lineWidth: 3,
-  //       amplitude: -75,
-  //       wavelength: 25,
-  //     },
-  //   ],
-  //   // Called on window resize
-  //   resizeEvent: function () {
-  //     var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-  //     gradient.addColorStop(0, 'rgba(23, 210, 168, 0.2)');
-  //     gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
-  //     gradient.addColorStop(1, 'rgba(23, 210, 168, 0.2)');
-  //     var index = -1;
-  //     var length = this.waves.length;
-  //     while (++index < length) {
-  //       this.waves[index].strokeStyle = gradient;
-  //     }
-  //     // Clean Up
-  //     // index = void 0;
-  //     // length = void 0;
-  //     // gradient = void 0;
-  //   },
-  // });
-  // var waves = new SineWaves({
-  //   // Canvas Element
-  //   el: document.getElementById('waves'),
-  //   running: false,
-  //   waves: [{}],
-  // });
-
-  // render(){}
   useEffect(() => {
-    // debugger;
     let waves = new SineWaves({
       el: document.getElementById('waves2'),
       speed: 8,
       width: function () {
         return $('#sine-wave-window').width();
       },
-      // height: function () {
-      //   return $('#sine-wave-window').height();
-      // },
+
       ease: 'SineInOut',
       wavesWidth: '100%',
       waves: [
@@ -80,61 +30,13 @@ const SineWave2 = () => {
       // Called on window resize
       resizeEvent: function () {
         var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-        // gradient.addColorStop(0, 'rgba(23, 210, 168, 0.2)');
-        // gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
-        // gradient.addColorStop(1, 'rgba(23, 210, 168, 0.2)');
       },
     });
-    // waves.running = false;
-    // waves.update();
-    // });
-
-    // let waves2 = new SineWaves({
-    //   el: document.getElementById('waves'),
-    //   speed: 8,
-    //   width: function () {
-    //     return $('#sine-wave-window-2').width();
-    //   },
-    //   // height: function () {
-    //   //   return $('#sine-wave-window').height();
-    //   // },
-    //   ease: 'SineInOut',
-    //   wavesWidth: '200%',
-    //   waves: [
-    //     {
-    //       timeModifier: 4,
-    //       lineWidth: 3,
-    //       amplitude: -45,
-    //       wavelength: 50,
-    //       strokeStyle: 'rgba(0,255,0,.8)', // Stroke color and opacity
-    //     },
-    //   ],
-    //   // Called on window resize
-    //   resizeEvent: function () {
-    //     var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-    //     gradient.addColorStop(0, 'rgba(23, 210, 168, 0.2)');
-    //     gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
-    //     gradient.addColorStop(1, 'rgba(23, 210, 168, 0.2)');
-    //   },
-    // });
-    // waves.running = false;
-    // waves.update();
   });
 
-  // console.log('inside');
-  // debugger;
-  // });
-
-  // or
-
-  // And then update the animation one frame
-
-  // debugger;
   return (
     <>
-      {/* <h1>This is where it should be</h1> */}
       <canvas id="waves2" className=""></canvas>
-      {/* {waves} */}
     </>
   );
 };
