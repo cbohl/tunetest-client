@@ -1,16 +1,18 @@
-// /* eslint-disable */
+// It is necessary to specify the instance of SineWave for now
+// due to the limitations of the SineWave module.
 
 import React, { useEffect } from 'react';
 import $ from 'jquery';
 import SineWaves from 'sine-waves';
 
-const SineWave = () => {
+const SineWave = ({ instance }: { instance: number }) => {
   useEffect(() => {
     new SineWaves({
-      el: document.getElementById('waves'),
+      el: document.getElementById('waves-' + instance.toString()),
+
       speed: 8,
       width: function () {
-        return $('#sine-wave-window').width();
+        return $('#sine-wave-window-' + instance.toString()).width();
       },
 
       ease: 'SineInOut',
@@ -33,7 +35,7 @@ const SineWave = () => {
 
   return (
     <>
-      <canvas id="waves" className=""></canvas>
+      <canvas id={'waves-' + instance.toString()} className=""></canvas>
     </>
   );
 };
