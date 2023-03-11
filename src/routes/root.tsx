@@ -1,14 +1,9 @@
-/* eslint-disable */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import NavBar from '../components/NavBar';
 import SineWave from '../components/SineWave';
 import SineWave2 from '../components/SineWave2';
-// import Canvas from '../components/Canvas';
-
-// import Wave from '../components/Wave';
 interface Artist {
   id: number;
   firstName: string;
@@ -37,46 +32,16 @@ export default function Root() {
       <div id="sine-wave-window" className="">
         <SineWave></SineWave>
       </div>
-      {/* <h2>Test</h2>
-      <div id="sine-wave-window-2" className="row-span-2">
-        <SineWave></SineWave>
-      </div> */}
       <div className=" grid place-items-center">
         <div className="flex justify-center bg-rose-dark">
           <div className="grid grid-rows-6 w-full max-h-screen">
             <div className="row-span-1 grid place-items-center">
-              {/* <div>
-              <h1>Welcome to TuneTest!</h1>
-            </div> */}
-              {/* <div className="w-1/4  "> */}
               <div className="h-auto w-full grid place-items-center bg-[#f7f7f7]">
                 <a href={'/'}>
                   <img src={'/tunetestlogo.png'} className="w-60"></img>
                 </a>
               </div>
             </div>
-
-            {/* <h1>THIS IS A RIVER.</h1>
-<h2>How majestic.</h2> */}
-            {/* <nav> */}
-
-            {/*          
-          <div className="row-span-3 grid grid-rows-3 w-4/5 bg-white h-full">
-          
-          
-          
-          <div className="row-span-1 w-3/5 bg-lime-500 h-full">
-          <h1>test 1</h1>
-          </div>
-          <div className="row-span-1 w-3/5 bg-lime-500 h-full">
-          <h1>test 2</h1>
-          </div>
-          <div className="row-span-1 w-3/5 bg-lime-500 h-full">
-          <h1>test 3</h1>
-          </div>
-          
-          
-        </div> */}
 
             <nav className="row-span-5 grid grid-rows-3 h-full w-full">
               <video
@@ -112,7 +77,6 @@ export default function Root() {
                 );
               })}
             </nav>
-            {/* </nav> */}
           </div>
         </div>
       </div>
