@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 
 import React, { useEffect } from 'react';
 import $ from 'jquery';
@@ -6,7 +6,7 @@ import SineWaves from 'sine-waves';
 
 const SineWave = () => {
   useEffect(() => {
-    let waves = new SineWaves({
+    new SineWaves({
       el: document.getElementById('waves'),
       speed: 8,
       width: function () {
@@ -26,7 +26,7 @@ const SineWave = () => {
       ],
       // Called on window resize
       resizeEvent: function () {
-        var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
+        this.ctx.createLinearGradient(0, 0, this.width, 0);
       },
     });
   });

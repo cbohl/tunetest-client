@@ -1,7 +1,7 @@
 // Although this fails the coding principle of DRY, this file is currently
 // necessary due to the constraints of the sine-waves Node module.
 
-/* eslint-disable */
+// /* eslint-disable */
 
 import React, { useEffect } from 'react';
 import $ from 'jquery';
@@ -9,7 +9,7 @@ import SineWaves from 'sine-waves';
 
 const SineWave2 = () => {
   useEffect(() => {
-    let waves = new SineWaves({
+    new SineWaves({
       el: document.getElementById('waves2'),
       speed: 8,
       width: function () {
@@ -29,7 +29,7 @@ const SineWave2 = () => {
       ],
       // Called on window resize
       resizeEvent: function () {
-        var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
+        this.ctx.createLinearGradient(0, 0, this.width, 0);
       },
     });
   });
